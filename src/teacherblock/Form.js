@@ -9,6 +9,8 @@ export default function Form(props) {
       return
     props.setmessage({question: props.message.question, qid : props.message.qid, answer : props.message.answer})
     props.submitHandler(e);
+    console.log("object")
+    props.setDisplay(prev=>!prev)
   }
 
   return (

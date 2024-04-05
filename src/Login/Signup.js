@@ -54,6 +54,7 @@ export default function Signup() {
             return
         }
         else {
+
             await axios
                 .post(`${BASE_URL}/api/`, stulogin, {
                     headers: {
@@ -61,6 +62,7 @@ export default function Signup() {
                     }
                 })
                 .then((res) => {
+                    console.log(res)
                     // localStorage.setItem("token",res.data.studentInfo.token)
                     user.updateUser(res.data)
                     navigate("/mnm/student")

@@ -19,17 +19,16 @@ export default function Mainteacherblock() {
   const navigate = useNavigate()
 
   useEffect(() => {
-
     console.log(faculty)
     if (faculty.faculty.isSuccess && JSON.parse(localStorage.getItem("faculty")).isSuccess) {
-      console.log(faculty.faculty.isSuccess)
-      console.log(JSON.parse(localStorage.getItem("faculty")).isSuccess)
+      // console.log(faculty.faculty.isSuccess)
+      // console.log(JSON.parse(localStorage.getItem("faculty")).isSuccess)
       navigate("/mnm/teacher");
     }
     else {
-      console.log("else")
-      console.log(faculty)
-      console.log(JSON.parse(localStorage.getItem("faculty")).isSuccess)
+      // console.log("else")
+      // console.log(faculty)
+      // console.log(JSON.parse(localStorage.getItem("faculty")).isSuccess)
       navigate("/mnm/faculty")
     }
   }, [faculty.faculty.isSuccess, navigate])
@@ -92,6 +91,7 @@ export default function Mainteacherblock() {
         questionHandler={questionHandler}
         submitHandler={submitHandler}
         display={display}
+        setDisplay = {setDisplay}
       />
     </>
   )

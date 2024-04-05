@@ -62,6 +62,7 @@ export default function Teacher(props) {
                     setmessage={props.setmessage}
                     submitHandler={props.submitHandler}
                     display={props.display}
+                    setDisplay = {props.setDisplay}
                     name={faculty.faculty.name}
                     state={props.state}
                 />
