@@ -4,12 +4,10 @@
     font-weight: 500;
     color: #000d;
     font-style: normal;
-    box-shadow:
-        14.6px 15.9px 10px rgba(0, 0, 0, 0.042),
-        57px 62px 80px rgba(0, 0, 0, 0.06);
+    box-shadow: 14.6px 15.9px 10px rgba(0, 0, 0, 0.042), 57px 62px 80px rgba(0, 0, 0, 0.06);
     margin: 10px auto;
     border: 1px #00000045 solid;
-    width: 60%;
+    width: 70%;
 }
 
 .hodmessage {
@@ -28,8 +26,8 @@
 
 .secondaryBlock {
     /* height: 97%; */
-    width: 40%;
-    padding: 50px;
+    width: 46%;
+    padding: 50px 0px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -42,7 +40,7 @@
     height: 80vh;
     overflow-y: auto;
     width: 100%;
-  }
+}
 
 
 .question,
@@ -62,6 +60,7 @@
     font-weight: 400;
     font-style: normal;
     padding: 5px;
+    margin: 15px auto;
 }
 
 .namesBlock {
@@ -119,7 +118,7 @@
     display: none;
 }
 
-.extrablock{
+.extrablock {
     display: none;
 }
 
@@ -143,7 +142,8 @@
     .hodmessage {
         width: 75%;
     }
-    .nameBlock{
+
+    .nameBlock {
         font-size: 30px;
     }
 }
@@ -170,7 +170,7 @@
         display: none;
     }
 
-    .extrablock{
+    .extrablock {
         display: block;
     }
 

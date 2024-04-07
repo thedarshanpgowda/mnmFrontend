@@ -1,0 +1,308 @@
+body {
+    overflow: hidden;
+}
+
+.studentBlock {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+.navigationBarBlock {
+    width: 20%;
+    border: 1px black solid;
+    height: 97%;
+    background: #f8fdffdb;
+    border-radius: 15px;
+}
+
+.HeaderNavbarcontentBlock {
+    margin: 30px 10px 0px 10px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background: #0003;
+    font-size: 16px;
+    text-align: center;
+    padding: 15px;
+}
+
+.logout {
+    margin: 0px 10px 0px 14px;
+}
+
+.NavbarBodyBlockcontent {
+    display: flex;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.NavbarBodyBlockcontent:hover,
+.active {
+    background-color: #0002;
+    cursor: pointer;
+}
+
+.NavbarBodyBlockcontent img {
+    height: 20px;
+    margin: 0px 10px;
+}
+
+.nunito {
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.NavbarBodyContent {
+    margin: 40px 0px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 81%;
+    /* align-items: center; */
+}
+
+.mainstudentBlock {
+    width: 79%;
+    overflow-y: auto;
+}
+
+.imageContainerBlock {
+    height: 40px;
+    width: 40px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.mainnavbartop {
+    border-bottom: 1px solid black;
+    margin: 20px;
+}
+
+.studentDataInfoNavbar {
+    width: 96%;
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px;
+    padding: 10px;
+}
+
+.imageContainerBlock img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.mainContentblock {
+    padding: 20px;
+    border: 1px black solid;
+    margin: 20px;
+    border-radius: 20px;
+}
+
+.p {
+    margin: 0px 0px 0px 50px;
+}
+
+.studentCredentials {
+    display: flex;
+    align-items: center;
+}
+
+.examBlockDetails {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.cie {
+    background: #0002;
+    width: 90%;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /* align-items: center; */
+    margin: 10px auto;
+    /* height: 150px; */
+}
+
+.reasonsFor {
+    width: 100%;
+}
+
+.completedetails {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 200px;
+    justify-content: space-evenly;
+}
+
+.studentDetailsBlock {
+    padding: 80px 0px;
+}
+
+.inputBlockContainer {
+    border: 1px black solid;
+    border-radius: 15px;
+    overflow: hidden;
+    width: 15%;
+    /* padding: 10px; */
+}
+
+.inputBlockContainer2 {
+    border: 1px black solid;
+    border-radius: 15px;
+    overflow: hidden;
+    margin: auto;
+    width: 93%;
+    /* padding: 10px; */
+}
+
+.inputBlockContainer input {
+    padding: 20px 10px;
+    border: none;
+    width: 100%;
+    height: 40%;
+}
+
+.addr {
+    margin: 0;
+}
+
+.cie1Submit {
+    padding: 10px;
+    width: 21%;
+    margin: 0px 30px;
+    display: block;
+}
+
+.rightblockcontainer {
+    width: 79%;
+}
+
+.paragraph {
+    margin: 14px 45px;
+}
+
+.subjectHandler {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.updateProfileBlock {
+    width: 79%;
+    overflow-y: auto;
+}
+
+.profileblockcontainer {
+    margin: 20px;
+    padding: 20px;
+}
+
+.studentBlockContainer {
+    display: block;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px black solid;
+    width: 100%;
+  box-sizing: border-box;
+}
+
+.querry {
+    margin: 10px 5px;
+}
+
+.studentInfoName {
+    margin: 0px 0px 37px 0px;
+}
+
+.editoption {
+    margin: 0px 0px 30px 0px;
+}
+
+.editoption img {
+    height: 20px;
+}
+
+.editoption button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 150px;
+    cursor: pointer;
+}
+
+.detailsBlockStudent {
+    margin: 0 0 20px 0;
+}
+
+table {
+    width: 100%;
+}
+
+tr {
+    display: block;
+    width: 100%;
+}
+
+tr td:first-child {
+    border: 1px black solid;
+    padding: 10px;
+    width: 150px;
+    font-weight: 600;
+}
+
+tr td:last-child {
+    border: 1px black solid;
+    padding: 10px;
+    width: 80%;
+
+}
+
+tbody {
+    width: 100%;
+
+    display: block;
+
+
+}
+
+.studentBlockContainer:focus {
+    border: 1px black solid;
+}
+.error{
+    color: red;
+    padding: 15px;
+    background: #ff000010;
+}
+.success{
+    color: green;
+    padding: 15px;
+    background: #00ff0010;
+    margin: 20px;
+}
+
+.orange{
+    color: orange;
+    padding: 15px;
+    background-color: #dc143c10;
+}
+
+.submitbutton button{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 150px;
+        cursor: pointer;
+        padding: 10px;
+      
+}
+.studentDetailsBlock1{
+    padding: 10px 0px;
+}

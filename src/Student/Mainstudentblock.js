@@ -96,19 +96,12 @@ function Mainstudentblock() {
     // window.location.reload();
   };
 
-  const logouthandler = () => {
-    localStorage.removeItem("data")
-    user.updateUser(null)
-    navigate("/mnm/")
-  }
+
 
   return (
-    <>
+    <div className="rightblockcontainer">
       <Chart className="flexbox">
-        <Chart className="nameBlock">{user.user.name}{" | "}{user.user.id}</Chart>
-        <div className="flexbutton">
-          <div className="button question" onClick={logouthandler}>Log-Out</div>
-        </div>
+        <Chart className="nameBlock">Post your Querry here</Chart>
       </Chart>
       <Chart className={styles.mainBlock}>
         <Studentform submitHandler={submitHandler} />
@@ -117,7 +110,7 @@ function Mainstudentblock() {
         <Modal view={view} onClose={onClose} setview={setview} status={modal.status} message={modal.message}>
         </Modal>
       </Chart>
-    </>
+    </div>
   );
 }
 

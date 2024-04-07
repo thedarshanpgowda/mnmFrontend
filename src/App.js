@@ -10,6 +10,7 @@ import Signup from "./Login/Signup";
 import Newstate from "./context/Newstate";
 import FacultyState from "./context/FacultyState";
 import Landing from "./components/Landing";
+import Mainlanding from "./Student/Mainlanding";
 
 function App() {
 
@@ -23,7 +24,8 @@ function App() {
               <Route exact path="/" element={<Landing/>} />
               <Route exact path="/mnm/" element={<Signup />} />
               <Route path="/mnm/faculty" element={<FacultyLogin />} />
-              <Route path="/mnm/student" element={<Mainstudentblock />} />
+              {/* <Route path="/mnm/student" element={<Mainstudentblock />} /> */}
+              <Route path="/mnm/student" element={<Mainlanding />} />
               <Route path="/mnm/HOD" element={<Mainhodblock />} />
               <Route path="/mnm/teacher" element={<Mainteacherblock />} />
             </Routes>

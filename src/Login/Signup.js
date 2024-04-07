@@ -64,6 +64,7 @@ export default function Signup() {
                 .then((res) => {
                     console.log(res)
                     // localStorage.setItem("token",res.data.studentInfo.token)
+                    console.log("object")
                     user.updateUser(res.data)
                     navigate("/mnm/student")
                     // console.log(user)
@@ -130,6 +131,30 @@ export default function Signup() {
                         </Chart>
                         <Chart isset="true" val="10px" className={styles.inputBlockContainer}>
                             <input type="password" id="cpassword" value={signup.confirmPassword} onChange={(e) => setsignup({ ...signup, confirmPassword: e.target.value })} className={styles.inputBlock} placeholder='Confirm Password' required />
+                        </Chart>
+
+                        <Chart isset="true" val="10px" className={styles.inputBlockContainer}>
+                            <input type="text" id="mid" value={signup.mentorId} onChange={(e) => setsignup({ ...signup, mentorId: e.target.value })} className={styles.inputBlock} placeholder='Mentor ID' required />
+                        </Chart>
+
+                        <Chart isset="true" val="10px" className={styles.inputBlockContainer}>
+                            <input type="date" id="dob" value={signup.dob} onChange={(e) => setsignup({ ...signup, dob: e.target.value })} className={styles.inputBlock} placeholder='Date of Birth' required />
+                        </Chart>
+
+
+                        <Chart isset="true" val="10px" className={styles.inputBlockContainer}>
+                            <input type="text" id="addr" value={signup.address} onChange={(e) => setsignup({ ...signup, address: e.target.value })} className={styles.inputBlock} placeholder='Address' required />
+                        </Chart>
+                        <Chart isset="true" val="10px" className={styles.inputBlockContainer}>
+                            <input type="text" id="father" value={signup.father} onChange={(e) => setsignup({ ...signup, father: e.target.value })} className={styles.inputBlock} placeholder='Father Name' required />
+                        </Chart>
+
+                        <Chart isset="true" val="10px" className={styles.inputBlockContainer}>
+                            <input type="text" id="mother" value={signup.mother} onChange={(e) => setsignup({ ...signup, mother: e.target.value })} className={styles.inputBlock} placeholder='Mother Name' required />
+                        </Chart>
+
+                        <Chart isset="true" val="10px" className={styles.inputBlockContainer}>
+                            <input type="blood" id="blood" value={signup.blood} onChange={(e) => setsignup({ ...signup, blood: e.target.value })} className={styles.inputBlock} placeholder='Blood group' required />
                         </Chart>
 
 
