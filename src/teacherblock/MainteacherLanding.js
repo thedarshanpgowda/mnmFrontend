@@ -61,8 +61,13 @@ export function LeftSubMainlanding(props) {
         <div className="navigationBarBlock">
             <div className="profileblock cancel" onClick={() => {
                 const navigationBarBlock = document.querySelector('.navigationBarBlock');
+
                 if (navigationBarBlock) {
-                    navigationBarBlock.style.marginTop = "500%";
+                    if (window.innerWidth < 600) {
+                        navigationBarBlock.style.marginTop = "500%";
+                    } else {
+                        navigationBarBlock.style.marginTop = "0px";
+                    }
                 }
             }}>
                 X
@@ -77,9 +82,14 @@ export function LeftSubMainlanding(props) {
                     <div className="NavbarBodyBlockcontent" onClick={() => {
                         hoveringEffect()
                         const navigationBarBlock = document.querySelector('.navigationBarBlock');
-                        props.setBlockView({ complain: true, profile: false, update: false })
+                        const navigationBarBlock = document.querySelector('.navigationBarBlock');
+
                         if (navigationBarBlock) {
-                            navigationBarBlock.style.marginTop = "500%";
+                            if (window.innerWidth < 600) {
+                                navigationBarBlock.style.marginTop = "500%";
+                            } else {
+                                navigationBarBlock.style.marginTop = "0px";
+                            }
                         }
                     }}>
                         <img src="https://cdn-icons-png.flaticon.com/128/9228/9228191.png" alt="see" />
@@ -89,14 +99,24 @@ export function LeftSubMainlanding(props) {
                         hoveringEffect()
                         props.setBlockView({ complain: false, profile: true, update: false })
                         const navigationBarBlock = document.querySelector('.navigationBarBlock');
+
                         if (navigationBarBlock) {
-                            navigationBarBlock.style.marginTop = "500%";
+                            if (window.innerWidth < 600) {
+                                navigationBarBlock.style.marginTop = "500%";
+                            } else {
+                                navigationBarBlock.style.marginTop = "0px";
+                            }
                         }
                     }}>
                         <img src="https://cdn-icons-png.flaticon.com/128/1077/1077114.png" alt="profile" onClick={() => {
                             const navigationBarBlock = document.querySelector('.navigationBarBlock');
+
                             if (navigationBarBlock) {
-                                navigationBarBlock.style.marginTop = "500%";
+                                if (window.innerWidth < 600) {
+                                    navigationBarBlock.style.marginTop = "500%";
+                                } else {
+                                    navigationBarBlock.style.marginTop = "0px";
+                                }
                             }
                         }} />
                         <div className="actualContent">Review Students</div>
@@ -110,13 +130,13 @@ export function LeftSubMainlanding(props) {
                         <div className="actualContent">Update CIE Details</div>
                     </div> */}
 
-                    <div className="NavbarBodyBlockcontent" onClick={() => {
+                    {/* <div className="NavbarBodyBlockcontent" onClick={() => {
                         hoveringEffect()
                         props.setBlockView({ complain: false, profile: false, view: true, update: false })
                     }}>
                         <img src="https://cdn-icons-png.flaticon.com/128/14241/14241786.png" alt="update" />
                         <div className="actualContent">Student History </div>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="navbarcontainerBottomPart" onClick={() => {
                     hoveringEffect()

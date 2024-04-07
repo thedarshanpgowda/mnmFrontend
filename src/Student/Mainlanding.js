@@ -56,8 +56,13 @@ export function LeftSubMainlanding(props) {
         <div className="navigationBarBlock">
             <div className="profileblock cancel" onClick={() => {
                 const navigationBarBlock = document.querySelector('.navigationBarBlock');
+
                 if (navigationBarBlock) {
-                    navigationBarBlock.style.marginTop = "500%";
+                    if (window.innerWidth < 600) {
+                        navigationBarBlock.style.marginTop = "500%";
+                    } else {
+                        navigationBarBlock.style.marginTop = "0px";
+                    }
                 }
             }}>
                 X
@@ -73,8 +78,13 @@ export function LeftSubMainlanding(props) {
                         hoveringEffect()
                         props.setBlockView({ complain: true, profile: false, update: false })
                         const navigationBarBlock = document.querySelector('.navigationBarBlock');
+
                         if (navigationBarBlock) {
-                            navigationBarBlock.style.marginTop = "500%";
+                            if (window.innerWidth < 600) {
+                                navigationBarBlock.style.marginTop = "500%";
+                            } else {
+                                navigationBarBlock.style.marginTop = "0px";
+                            }
                         }
                     }}>
                         <img src="https://cdn-icons-png.flaticon.com/128/9228/9228191.png" alt="see" />
@@ -84,8 +94,13 @@ export function LeftSubMainlanding(props) {
                         hoveringEffect()
                         props.setBlockView({ complain: false, profile: true, update: false })
                         const navigationBarBlock = document.querySelector('.navigationBarBlock');
+
                         if (navigationBarBlock) {
-                            navigationBarBlock.style.marginTop = "500%";
+                            if (window.innerWidth < 600) {
+                                navigationBarBlock.style.marginTop = "500%";
+                            } else {
+                                navigationBarBlock.style.marginTop = "0px";
+                            }
                         }
 
                     }}>
@@ -97,8 +112,13 @@ export function LeftSubMainlanding(props) {
                         hoveringEffect()
                         props.setBlockView({ complain: false, profile: false, update: true })
                         const navigationBarBlock = document.querySelector('.navigationBarBlock');
+
                         if (navigationBarBlock) {
-                            navigationBarBlock.style.marginTop = "500%";
+                            if (window.innerWidth < 600) {
+                                navigationBarBlock.style.marginTop = "500%";
+                            } else {
+                                navigationBarBlock.style.marginTop = "0px";
+                            }
                         }
                     }}>
                         <img src="https://cdn-icons-png.flaticon.com/128/15368/15368706.png" alt="update" />
@@ -108,8 +128,13 @@ export function LeftSubMainlanding(props) {
                         hoveringEffect()
                         props.setBlockView({ complain: false, profile: false, view: true, update: false })
                         const navigationBarBlock = document.querySelector('.navigationBarBlock');
+
                         if (navigationBarBlock) {
-                            navigationBarBlock.style.marginTop = "500%";
+                            if (window.innerWidth < 600) {
+                                navigationBarBlock.style.marginTop = "500%";
+                            } else {
+                                navigationBarBlock.style.marginTop = "0px";
+                            }
                         }
                     }}>
                         <img src="https://cdn-icons-png.flaticon.com/128/14241/14241786.png" alt="update" />
@@ -120,8 +145,13 @@ export function LeftSubMainlanding(props) {
                     hoveringEffect()
                     console.log(props.blockView)
                     const navigationBarBlock = document.querySelector('.navigationBarBlock');
+
                     if (navigationBarBlock) {
-                        navigationBarBlock.style.marginTop = "500%";
+                        if (window.innerWidth < 600) {
+                            navigationBarBlock.style.marginTop = "500%";
+                        } else {
+                            navigationBarBlock.style.marginTop = "0px";
+                        }
                     }
                 }}>
                     <div className="NavbarBodyBlockcontent" onClick={props.logouthandler}>
