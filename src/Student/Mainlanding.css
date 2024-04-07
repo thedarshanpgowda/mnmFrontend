@@ -319,6 +319,10 @@ tbody {
 }
 
 @media(width < 600px) {
+    body {
+        overflow: auto;
+    }
+
     .rightblockcontainer {
         width: 100%;
     }
