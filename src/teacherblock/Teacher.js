@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 
 export default function Teacher(props) {
 
-    
+
     const [profileView, setProfileView] = useState(false)
     const faculty = useContext(FacultyProfileContext)
 
@@ -26,7 +26,12 @@ export default function Teacher(props) {
         <>
             <div className="extrablock">
                 <div className="profilePic">
-                    <img src="https://cdn-icons-png.flaticon.com/128/64/64572.png" alt="profilelink" className='profilepic' onClick={() => setProfileView(true)} />
+                    <img src="https://cdn-icons-png.flaticon.com/128/64/64572.png" alt="profilelink" className='profilepic' onClick={() => {
+                        const navigationBarBlock = document.querySelector('.navigationBarBlock');
+                        if (navigationBarBlock) {
+                            navigationBarBlock.style.marginTop = "0%";
+                        }
+                    }} />
                     <Chart className="nameBlock">{faculty.faculty.name}</Chart>
                 </div>
                 {
@@ -62,7 +67,7 @@ export default function Teacher(props) {
                     setmessage={props.setmessage}
                     submitHandler={props.submitHandler}
                     display={props.display}
-                    setDisplay = {props.setDisplay}
+                    setDisplay={props.setDisplay}
                     name={faculty.faculty.name}
                     state={props.state}
                 />

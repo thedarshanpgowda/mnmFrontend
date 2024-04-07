@@ -44,6 +44,7 @@ export default function Newstate(props) {
                 dob: undefined,
                 mentorId: undefined,
                 addr: undefined,
+                sem: undefined,
                 token: undefined,
                 mother: undefined,
                 father: undefined
@@ -67,6 +68,7 @@ export default function Newstate(props) {
                 addr: data.studentInfo.data.address || undefined,
                 branch: data.studentInfo.data.branch || undefined,
                 mentorId: data.studentInfo.data.mentorId || undefined,
+                sem: data.studentInfo.data.sem || undefined,
                 mother: data.studentInfo.data.mother || undefined,
                 father: data.studentInfo.data.father || undefined,
                 isSuccess: true,
@@ -87,6 +89,7 @@ export default function Newstate(props) {
                 dob: undefined,
                 mentorId: undefined,
                 addr: undefined,
+                sem: undefined,
                 mother: undefined,
                 father: undefined,
                 isSuccess: false,

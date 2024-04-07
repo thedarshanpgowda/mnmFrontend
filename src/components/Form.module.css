@@ -40,11 +40,10 @@
 
 .primaryBlock {
     width: 50%;
-    height: 80vh;
-    display: flex;
+    /* height: 80vh; */
     justify-content: center;
-    align-items: center;
     padding: 50px 10px;
+    display: flex;
 }
 
 .primaryContainer {
@@ -53,7 +52,7 @@
         57px 62px 80px rgba(0, 0, 0, 0.06);
     /* height: 480px; */
 
-    margin: auto;
+    margin: 0 auto;
     padding: 20px 50px 30px;
 }
 
@@ -87,7 +86,9 @@
     padding: 13px;
     border-radius: 10px;
 }
-
+hr {
+    display: none;
+}
 @media(width < 800px) {
     hr {
         display: none;
@@ -111,13 +112,21 @@
     .inputBlock {
         width: 85%;
     }
+
     .fileblock {
         width: 300px;
     }
 
 }
 
-@media(width < 380px){
+@media (width < 600px) {
+    .primaryBlock {
+        width: 95%;
+        height: auto;
+    }
+}
+
+@media(width < 380px) {
     .fileblock {
         width: 250px;
     }

@@ -100,7 +100,13 @@ export default function RightSubMainlanding() {
             <div className="mainnavbartop">
                 <div className="studentDataInfoNavbar">
                     <div className="imageContainerBlock">
-                        <img src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D" alt="profile" />
+                        <img src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D" alt="profile" 
+                        onClick={() => {
+                            const navigationBarBlock = document.querySelector('.navigationBarBlock');
+                            if (navigationBarBlock) {
+                                navigationBarBlock.style.marginTop = "0%";
+                            }
+                        }} />
                     </div>
                 </div>
             </div>
@@ -112,9 +118,9 @@ export default function RightSubMainlanding() {
                     </div>
                     {user1.user.address ? <p className="addr nunito">{user1.user?.addr}</p> : <p className="addr nunito">Malnad College of Engineering</p>}
                 </div>
-                <div className="studentDetailsBlock1 nunito">
+                {user ? (<div className="studentDetailsBlock1 nunito">
                     <div className="examinationDetails">
-                    <div className="orange nunito">This data will be stored permanently and cannot be changed in the future.</div>
+                        <div className="orange nunito">This data will be stored permanently and cannot be changed in the future.</div>
                         {isLoading ? (<p className='nunito orange'>Your data is being Fetched from the server...</p>) : (
                             <div className="examBlockDetails">
                                 {/* CIE1 */}
@@ -124,19 +130,19 @@ export default function RightSubMainlanding() {
                                         <div className="nunito completedetails completedetailscie1">
                                             <div className="subjectHandler">
                                                 <div className="inputBlockContainer">
-                                                    <input type="text" placeholder='21CS601 marks' onChange={(e) => handleInputChange(e, 'cie1', '21CS601')} />
+                                                    <input type="text" placeholder='XXXXX01 marks' onChange={(e) => handleInputChange(e, 'cie1', 'XXXXX0')} />
                                                 </div>
                                                 <div className="inputBlockContainer">
-                                                    <input type="text" placeholder='21CS602 marks' onChange={(e) => handleInputChange(e, 'cie1', '21CS602')} />
+                                                    <input type="text" placeholder='XXXXX02 marks' onChange={(e) => handleInputChange(e, 'cie1', 'XXXXX0')} />
                                                 </div>
                                                 <div className="inputBlockContainer">
-                                                    <input type="text" placeholder='21CS601 marks' onChange={(e) => handleInputChange(e, 'cie1', '21CS603')} />
+                                                    <input type="text" placeholder='XXXXX03 marks' onChange={(e) => handleInputChange(e, 'cie1', '21CS603')} />
                                                 </div>
                                                 <div className="inputBlockContainer">
-                                                    <input type="text" placeholder='21CS602 marks' onChange={(e) => handleInputChange(e, 'cie1', '21CS604')} />
+                                                    <input type="text" placeholder='XXXXX04 marks' onChange={(e) => handleInputChange(e, 'cie1', '21CS604')} />
                                                 </div>
                                                 <div className="inputBlockContainer">
-                                                    <input type="text" placeholder='21CS602 marks' onChange={(e) => handleInputChange(e, 'cie1', '21CS605')} />
+                                                    <input type="text" placeholder='XXXXX05 marks' onChange={(e) => handleInputChange(e, 'cie1', '21CS605')} />
                                                 </div>
                                             </div>
                                             <div className="reasonsFor">
@@ -150,7 +156,7 @@ export default function RightSubMainlanding() {
                                         </button>
                                     </div>
                                 </>) : (
-                                    <div className="success">You have already submitted CIE1 details.</div>
+                                    <div className="success">You have already submitted CIE1 details</div>
                                 )}
                                 {/* CIE2 */}
                                 {
@@ -161,19 +167,19 @@ export default function RightSubMainlanding() {
                                                 <div className="nunito completedetails completedetailscie1">
                                                     <div className="subjectHandler">
                                                         <div className="inputBlockContainer">
-                                                            <input type="text" placeholder='21CS601 marks' onChange={(e) => handleInputChange(e, 'cie2', '21CS601')} />
+                                                            <input type="text" placeholder='XXXXX01 marks' onChange={(e) => handleInputChange(e, 'cie2', 'XXXXX0')} />
                                                         </div>
                                                         <div className="inputBlockContainer">
-                                                            <input type="text" placeholder='21CS602 marks' onChange={(e) => handleInputChange(e, 'cie2', '21CS602')} />
+                                                            <input type="text" placeholder='XXXXX02 marks' onChange={(e) => handleInputChange(e, 'cie2', 'XXXXX0')} />
                                                         </div>
                                                         <div className="inputBlockContainer">
-                                                            <input type="text" placeholder='21CS601 marks' onChange={(e) => handleInputChange(e, 'cie2', '21CS603')} />
+                                                            <input type="text" placeholder='XXXXX03 marks' onChange={(e) => handleInputChange(e, 'cie2', '21CS603')} />
                                                         </div>
                                                         <div className="inputBlockContainer">
-                                                            <input type="text" placeholder='21CS602 marks' onChange={(e) => handleInputChange(e, 'cie2', '21CS604')} />
+                                                            <input type="text" placeholder='XXXXX04 marks' onChange={(e) => handleInputChange(e, 'cie2', '21CS604')} />
                                                         </div>
                                                         <div className="inputBlockContainer">
-                                                            <input type="text" placeholder='21CS602 marks' onChange={(e) => handleInputChange(e, 'cie2', '21CS605')} />
+                                                            <input type="text" placeholder='XXXXX05 marks' onChange={(e) => handleInputChange(e, 'cie2', '21CS605')} />
                                                         </div>
                                                     </div>
                                                     <div className="reasonsFor">
@@ -188,7 +194,7 @@ export default function RightSubMainlanding() {
                                             </div>
                                         </>
                                     ) : (
-                                        <div className="success">You have already submitted CIE2 details.</div>
+                                        <div className="success">You have already submitted CIE2 details</div>
                                     )
                                 }
                                 {/* CIE3 */}
@@ -200,19 +206,19 @@ export default function RightSubMainlanding() {
                                                 <div className="nunito completedetails completedetailscie1">
                                                     <div className="subjectHandler">
                                                         <div className="inputBlockContainer">
-                                                            <input type="text" placeholder='21CS601 marks' onChange={(e) => handleInputChange(e, 'cie3', '21CS601')} />
+                                                            <input type="text" placeholder='XXXXX01 marks' onChange={(e) => handleInputChange(e, 'cie3', 'XXXXX0')} />
                                                         </div>
                                                         <div className="inputBlockContainer">
-                                                            <input type="text" placeholder='21CS602 marks' onChange={(e) => handleInputChange(e, 'cie3', '21CS602')} />
+                                                            <input type="text" placeholder='XXXXX02 marks' onChange={(e) => handleInputChange(e, 'cie3', 'XXXXX0')} />
                                                         </div>
                                                         <div className="inputBlockContainer">
-                                                            <input type="text" placeholder='21CS603 marks' onChange={(e) => handleInputChange(e, 'cie3', '21CS603')} />
+                                                            <input type="text" placeholder='XXXXX03 marks' onChange={(e) => handleInputChange(e, 'cie3', '21CS603')} />
                                                         </div>
                                                         <div className="inputBlockContainer">
-                                                            <input type="text" placeholder='21CS604 marks' onChange={(e) => handleInputChange(e, 'cie3', '21CS604')} />
+                                                            <input type="text" placeholder='XXXXX04 marks' onChange={(e) => handleInputChange(e, 'cie3', '21CS604')} />
                                                         </div>
                                                         <div className="inputBlockContainer">
-                                                            <input type="text" placeholder='21CS605 marks' onChange={(e) => handleInputChange(e, 'cie3', '21CS605')} />
+                                                            <input type="text" placeholder='XXXXX05 marks' onChange={(e) => handleInputChange(e, 'cie3', '21CS605')} />
                                                         </div>
                                                     </div>
                                                     <div className="reasonsFor">
@@ -227,7 +233,7 @@ export default function RightSubMainlanding() {
                                             </div>
                                         </>
                                     ) : (
-                                        <div className="success">You have already submitted CIE3 details.</div>
+                                        <div className="success">You have already submitted CIE3 details</div>
                                     )
                                 }
 
@@ -241,19 +247,19 @@ export default function RightSubMainlanding() {
                                                 <div className="nunito completedetails completedetailscie1">
                                                     <div className="subjectHandler">
                                                         <div className="inputBlockContainer">
-                                                            <input type="text" placeholder='21CS601 marks' onChange={(e) => handleInputChange(e, 'see', '21CS601')} />
+                                                            <input type="text" placeholder='XXXXX01 marks' onChange={(e) => handleInputChange(e, 'see', 'XXXXX0')} />
                                                         </div>
                                                         <div className="inputBlockContainer">
-                                                            <input type="text" placeholder='21CS602 marks' onChange={(e) => handleInputChange(e, 'see', '21CS602')} />
+                                                            <input type="text" placeholder='XXXXX02 marks' onChange={(e) => handleInputChange(e, 'see', 'XXXXX0')} />
                                                         </div>
                                                         <div className="inputBlockContainer">
-                                                            <input type="text" placeholder='21CS601 marks' onChange={(e) => handleInputChange(e, 'see', '21CS603')} />
+                                                            <input type="text" placeholder='XXXXX03 marks' onChange={(e) => handleInputChange(e, 'see', '21CS603')} />
                                                         </div>
                                                         <div className="inputBlockContainer">
-                                                            <input type="text" placeholder='21CS602 marks' onChange={(e) => handleInputChange(e, 'see', '21CS604')} />
+                                                            <input type="text" placeholder='XXXXX04 marks' onChange={(e) => handleInputChange(e, 'see', '21CS604')} />
                                                         </div>
                                                         <div className="inputBlockContainer">
-                                                            <input type="text" placeholder='21CS602 marks' onChange={(e) => handleInputChange(e, 'see', '21CS605')} />
+                                                            <input type="text" placeholder='XXXXX05 marks' onChange={(e) => handleInputChange(e, 'see', '21CS605')} />
                                                         </div>
                                                     </div>
                                                     <div className="reasonsFor">
@@ -268,13 +274,13 @@ export default function RightSubMainlanding() {
                                             </div>
                                         </>
                                     ) : (
-                                        <div className="success">You have already submitted SEE details.</div>
+                                        <div className="success">You have already submitted SEE details</div>
 
                                     )
                                 }
                             </div>)}
                     </div>
-                </div>
+                </div>) : (<p className='orange nunito'>Failed to fetch the data</p>)}
             </div>
         </div >
 

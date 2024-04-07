@@ -34,7 +34,7 @@ body {
 .NavbarBodyBlockcontent {
     display: flex;
     margin: 10px;
-    padding: 10px;    
+    padding: 10px;
     align-items: center;
 
     border-radius: 10px;
@@ -96,6 +96,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    cursor: pointer;
 }
 
 .mainContentblock {
@@ -213,7 +214,7 @@ body {
     border-radius: 10px;
     border: 1px black solid;
     width: 100%;
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .querry {
@@ -278,34 +279,153 @@ tbody {
 .studentBlockContainer:focus {
     border: 1px black solid;
 }
-.error{
+
+.error {
     color: red;
     padding: 15px;
     background: #ff000010;
 }
-.success{
+
+.success {
     color: green;
     padding: 15px;
     background: #00ff0010;
     margin: 20px;
 }
 
-.orange{
+.orange {
     color: orange;
     padding: 15px;
     background-color: #dc143c10;
     margin: 20px;
 }
 
-.submitbutton button{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 150px;
-        cursor: pointer;
-        padding: 10px;
-      
+.submitbutton button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 150px;
+    cursor: pointer;
+    padding: 10px;
+
 }
-.studentDetailsBlock1{
+
+.studentDetailsBlock1 {
     padding: 10px 0px;
+}
+
+.profileblock {
+    display: none;
+}
+
+@media(width < 600px) {
+    .rightblockcontainer {
+        width: 100%;
+    }
+
+    .profilePic img {
+        display: block;
+    }
+
+    .profileblock {
+        display: block;
+    }
+
+    .navigationBarBlock {
+        width: 96%;
+        z-index: 10;
+        position: absolute;
+        background: #fff;
+        margin-top: -500%;
+    }
+
+    .updateProfileBlock {
+        width: 100%;
+    }
+
+    .mainContentblock {
+        margin: 0;
+        border: none;
+        padding: 0;
+    }
+
+    .mainstudentBlock {
+        width: 100%;
+    }
+
+    .mainnavbartop {
+        border: none;
+    }
+
+    .completedetails {
+        height: auto;
+    }
+
+    .subjectHandler {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .inputBlockContainer {
+        width: 100%;
+        margin: 10px;
+    }
+
+    .cie1Submit {
+        padding: 10px;
+        width: 50%;
+        margin: 15px auto;
+        display: block;
+    }
+
+    .inputBlockContainer2 {
+        width: 100%;
+    }
+
+    .studentCredentials h1 {
+        height: 18px;
+    }
+
+    tbody {
+        font-size: 12px;
+    }
+
+    tr td:first-child {
+        width: 180px;
+    }
+
+    tr td:last-child {
+        width: 60%;
+    }
+
+    .studentInfoContainer h2 {
+        font-size: 18px;
+    }
+
+    .studentInfoContainer {
+        padding: 0;
+        margin: 0 10px;
+    }
+
+    .studentInfoName {
+        margin: 0px 0px 37px 0px;
+        padding: 20px;
+        border: 1px black solid;
+        border-radius: 15px;
+    }
+
+    .NavbarBodyContent {
+        height: 70%;
+    }
+
+    .studentainfocorner {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(width<300px) {
+    .studentainfocorner {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }

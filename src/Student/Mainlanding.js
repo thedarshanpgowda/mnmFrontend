@@ -54,6 +54,14 @@ export function LeftSubMainlanding(props) {
     }
     return (
         <div className="navigationBarBlock">
+            <div className="profileblock cancel" onClick={() => {
+                const navigationBarBlock = document.querySelector('.navigationBarBlock');
+                if (navigationBarBlock) {
+                    navigationBarBlock.style.marginTop = "500%";
+                }
+            }}>
+                X
+            </div>
             <Chart className="HeaderNavbarcontentBlock">
                 <div className="headercontent nunito">
                     {user.user.name} Dashboard
@@ -61,9 +69,13 @@ export function LeftSubMainlanding(props) {
             </Chart>
             <Chart className="NavbarBodyContent nunito">
                 <div className="navbarcontainerTopPart">
-                <div className="NavbarBodyBlockcontent" onClick={() => {
+                    <div className="NavbarBodyBlockcontent" onClick={() => {
                         hoveringEffect()
                         props.setBlockView({ complain: true, profile: false, update: false })
+                        const navigationBarBlock = document.querySelector('.navigationBarBlock');
+                        if (navigationBarBlock) {
+                            navigationBarBlock.style.marginTop = "500%";
+                        }
                     }}>
                         <img src="https://cdn-icons-png.flaticon.com/128/9228/9228191.png" alt="see" />
                         <div className="actualContent">Post a Complaint</div>
@@ -71,14 +83,23 @@ export function LeftSubMainlanding(props) {
                     <div className="NavbarBodyBlockcontent" onClick={() => {
                         hoveringEffect()
                         props.setBlockView({ complain: false, profile: true, update: false })
+                        const navigationBarBlock = document.querySelector('.navigationBarBlock');
+                        if (navigationBarBlock) {
+                            navigationBarBlock.style.marginTop = "500%";
+                        }
+
                     }}>
                         <img src="https://cdn-icons-png.flaticon.com/128/1077/1077114.png" alt="profile" />
                         <div className="actualContent">Profile</div>
                     </div>
-                    
+
                     <div className="NavbarBodyBlockcontent" onClick={() => {
                         hoveringEffect()
                         props.setBlockView({ complain: false, profile: false, update: true })
+                        const navigationBarBlock = document.querySelector('.navigationBarBlock');
+                        if (navigationBarBlock) {
+                            navigationBarBlock.style.marginTop = "500%";
+                        }
                     }}>
                         <img src="https://cdn-icons-png.flaticon.com/128/15368/15368706.png" alt="update" />
                         <div className="actualContent">Update CIE Details</div>
@@ -86,6 +107,10 @@ export function LeftSubMainlanding(props) {
                     <div className="NavbarBodyBlockcontent" onClick={() => {
                         hoveringEffect()
                         props.setBlockView({ complain: false, profile: false, view: true, update: false })
+                        const navigationBarBlock = document.querySelector('.navigationBarBlock');
+                        if (navigationBarBlock) {
+                            navigationBarBlock.style.marginTop = "500%";
+                        }
                     }}>
                         <img src="https://cdn-icons-png.flaticon.com/128/14241/14241786.png" alt="update" />
                         <div className="actualContent">Accademic History </div>
@@ -94,6 +119,10 @@ export function LeftSubMainlanding(props) {
                 <div className="navbarcontainerBottomPart" onClick={() => {
                     hoveringEffect()
                     console.log(props.blockView)
+                    const navigationBarBlock = document.querySelector('.navigationBarBlock');
+                    if (navigationBarBlock) {
+                        navigationBarBlock.style.marginTop = "500%";
+                    }
                 }}>
                     <div className="NavbarBodyBlockcontent" onClick={props.logouthandler}>
                         <img src="https://cdn-icons-png.flaticon.com/128/1828/1828479.png" alt="logout" className='logout' />

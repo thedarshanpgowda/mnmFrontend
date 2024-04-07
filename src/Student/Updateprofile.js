@@ -38,7 +38,7 @@ export default function Updateprofile() {
     const handleInputChange = (e) => {
 
         const { name, value } = e.target;
-        if (name === "hashedPassword") {
+        if (name === "password") {
             setUserInfo((prevState) => ({
                 ...prevState,
                 [name]: value,
@@ -76,6 +76,7 @@ export default function Updateprofile() {
                     setError("");
                     setMessage("Successfully updated the data")
                     setUserInfo(p => ({ ...p, isUpdated: false }))
+                    user.updateUser(res.data)
                     return 'false'
                 })
                 .catch((e) => {
@@ -96,6 +97,12 @@ export default function Updateprofile() {
                         <img
                             src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D"
                             alt="profile"
+                            onClick={() => {
+                                const navigationBarBlock = document.querySelector('.navigationBarBlock');
+                                if (navigationBarBlock) {
+                                  navigationBarBlock.style.marginTop = "0%";
+                                }
+                              }}
                         />
                     </div>
                 </div>
@@ -122,12 +129,12 @@ export default function Updateprofile() {
                     <div className="editoption" onClick={async (e) => {
                         const er = await handleSubmit(e)
                         if (er === 'true') {
-                            console.log(er)
+                            // console.log(er)
                             setIsEditable(true)
-                            console.log("set to true")
+                            // console.log("set to true")
                         } else {
-                            console.log(er)
-                            console.log("set to false")
+                            // console.log(er)
+                            // console.log("set to false")
                             setIsEditable(false)
                         }
                     }}>
@@ -171,8 +178,8 @@ export default function Updateprofile() {
                             <div className="inputholdingContainer">
                                 <input
                                     className="studentBlockContainer"
-                                    name="hashedPassword"
-                                    value={userInfo.hashedPassword || ""}
+                                    name="password"
+                                    
                                     onChange={handleInputChange}
                                     readOnly={!isEditable}
                                     placeholder="Password"
@@ -241,6 +248,19 @@ export default function Updateprofile() {
                                     onChange={handleInputChange}
                                     readOnly={!isEditable}
                                     placeholder="Address"
+                                />
+                            </div>
+                        </div>
+                        <div className="detailsBlockStudent nunito">
+                            <div className="querry">Semester</div>
+                            <div className="inputholdingContainer">
+                                <input
+                                    className="studentBlockContainer"
+                                    name="sem"
+                                    value={userInfo.sem || ""}
+                                    onChange={handleInputChange}
+                                    readOnly={!isEditable}
+                                    placeholder="Semester"
                                 />
                             </div>
                         </div>

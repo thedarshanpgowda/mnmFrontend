@@ -148,7 +148,7 @@
     }
 }
 
-@media(width < 500px) {
+@media(width < 600px) {
     .messageBlock {
         width: 85%;
     }
@@ -166,9 +166,7 @@
         height: auto;
     }
 
-    .flexbox {
-        display: none;
-    }
+
 
     .extrablock {
         display: block;
@@ -215,6 +213,8 @@
         font-size: 25px;
         cursor: pointer;
         font-family: "Nunito", sans-serif;
+        text-align: center;
+        margin: 30px 0px 0 0px;
     }
 
     .profileblockContainer {

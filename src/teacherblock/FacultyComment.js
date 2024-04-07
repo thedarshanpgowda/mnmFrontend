@@ -353,6 +353,12 @@ export default function FacultyComment() {
                         <img
                             src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D"
                             alt="profile"
+                            onClick={() => {
+                                const navigationBarBlock = document.querySelector('.navigationBarBlock');
+                                if (navigationBarBlock) {
+                                    navigationBarBlock.style.marginTop = "0%";
+                                }
+                            }}
                         />
                     </div>
                 </div>
@@ -376,14 +382,20 @@ export default function FacultyComment() {
                                 <div className="studentInfoContainer nunito"><h2>Student Details</h2></div>
                                 {
                                     studentdata.length === 0 ? (
-                                        <p className="nunito">No students have submitted the data</p>
+                                        <div className='nunito'>
+                                            <p className="orange">No student's have submitted their data</p>
+                                        </div>
                                     ) : (
                                         <div className="studentainfocorner">
                                             {studentdata
                                                 .sort((a, b) => parseInt(a.usn.slice(-3)) - parseInt(b.usn.slice(-3)))
                                                 .map(student => (
-                                                    <div key={student._id} className="singlestudentblock">
-                                                        <p className='usnblock nunito'>{student.usn}</p>
+                                                    <div key={student._id} className={`singlestudentblock ${((student.cie1 && student.cie1.facultyComment) || !student.cie1) &&
+                                                            ((student.cie2 && student.cie2.facultyComment) || !student.cie2) &&
+                                                            ((student.cie3 && student.cie3.facultyComment) || !student.cie3) &&
+                                                            ((student.see && student.see.facultyComment) || !student.see)
+                                                            ? "success" : ""
+                                                        }`}>                                                        <p className='usnblock nunito'>{student.usn}</p>
                                                         <div className="imagecontainer" onClick={() => {
                                                             eventhandler(student)
                                                         }}>

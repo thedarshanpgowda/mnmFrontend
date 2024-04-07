@@ -54,7 +54,7 @@ export default function Signup() {
             return
         }
         else {
-
+            console.log(stulogin)
             await axios
                 .post(`${BASE_URL}/api/`, stulogin, {
                     headers: {

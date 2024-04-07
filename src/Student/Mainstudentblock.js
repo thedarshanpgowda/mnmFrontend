@@ -22,7 +22,7 @@ function Mainstudentblock() {
   })
 
   useEffect(() => {
-    if (user.user.isSuccess && JSON.parse(localStorage.getItem("data")).isSuccess) {
+    if (user.user.isSuccess && localStorage.getItem("data") && JSON.parse(localStorage.getItem("data")).isSuccess) {
       // console.log("mainstudentblock.js/22")
       navigate("/mnm/student");
     }
@@ -100,6 +100,19 @@ function Mainstudentblock() {
 
   return (
     <div className="rightblockcontainer">
+      <div className="profilePic">
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/64/64572.png"
+          alt="profilelink"
+          className='profilepic'
+          onClick={() => {
+            const navigationBarBlock = document.querySelector('.navigationBarBlock');
+            if (navigationBarBlock) {
+              navigationBarBlock.style.marginTop = "0%";
+            }
+          }}
+        />
+      </div>
       <Chart className="flexbox">
         <Chart className="nameBlock">Post your Querry here</Chart>
       </Chart>

@@ -59,6 +59,14 @@ export function LeftSubMainlanding(props) {
     }
     return (
         <div className="navigationBarBlock">
+            <div className="profileblock cancel" onClick={() => {
+                const navigationBarBlock = document.querySelector('.navigationBarBlock');
+                if (navigationBarBlock) {
+                    navigationBarBlock.style.marginTop = "500%";
+                }
+            }}>
+                X
+            </div>
             <Chart className="HeaderNavbarcontentBlock">
                 <div className="headercontent nunito">
                     {faculty.faculty.name}'s Dashboard
@@ -68,7 +76,11 @@ export function LeftSubMainlanding(props) {
                 <div className="navbarcontainerTopPart">
                     <div className="NavbarBodyBlockcontent" onClick={() => {
                         hoveringEffect()
+                        const navigationBarBlock = document.querySelector('.navigationBarBlock');
                         props.setBlockView({ complain: true, profile: false, update: false })
+                        if (navigationBarBlock) {
+                            navigationBarBlock.style.marginTop = "500%";
+                        }
                     }}>
                         <img src="https://cdn-icons-png.flaticon.com/128/9228/9228191.png" alt="see" />
                         <div className="actualContent">View Student's Querries</div>
@@ -76,8 +88,17 @@ export function LeftSubMainlanding(props) {
                     <div className="NavbarBodyBlockcontent" onClick={() => {
                         hoveringEffect()
                         props.setBlockView({ complain: false, profile: true, update: false })
+                        const navigationBarBlock = document.querySelector('.navigationBarBlock');
+                        if (navigationBarBlock) {
+                            navigationBarBlock.style.marginTop = "500%";
+                        }
                     }}>
-                        <img src="https://cdn-icons-png.flaticon.com/128/1077/1077114.png" alt="profile" />
+                        <img src="https://cdn-icons-png.flaticon.com/128/1077/1077114.png" alt="profile" onClick={() => {
+                            const navigationBarBlock = document.querySelector('.navigationBarBlock');
+                            if (navigationBarBlock) {
+                                navigationBarBlock.style.marginTop = "500%";
+                            }
+                        }} />
                         <div className="actualContent">Review Students</div>
                     </div>
 

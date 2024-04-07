@@ -46,6 +46,12 @@ export default function MentorComment() {
                         <img
                             src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D"
                             alt="profile"
+                            onClick={() => {
+                                const navigationBarBlock = document.querySelector('.navigationBarBlock');
+                                if (navigationBarBlock) {
+                                    navigationBarBlock.style.marginTop = "0%";
+                                }
+                            }}
                         />
                     </div>
                 </div>
@@ -59,7 +65,7 @@ export default function MentorComment() {
                                 <p className="p nunito">{user1.user.id}</p>
                             </div>
                             {user1.user.address ? (
-                                <p className="addr nunito">{user.student.addr}</p>
+                                <p className="addr nunito">{user1.student.addr}</p>
                             ) : (
                                 <p className="addr nunito">Malnad College of Engineering</p>
                             )}
@@ -70,7 +76,7 @@ export default function MentorComment() {
                                 <table>
                                     <tbody>
                                         {
-                                            Object.keys(user.student).map(userKey => {
+                                            user.student ? (Object.keys(user.student).map(userKey => {
                                                 if (userKey === '__v' || userKey === '_v' || userKey === '_id' || userKey === 'password') {
                                                     return null;
                                                 } else {
@@ -81,7 +87,9 @@ export default function MentorComment() {
                                                         </tr>
                                                     );
                                                 }
-                                            })
+                                            })) : (
+                                                <tr className='nunito'><td className='orange' colSpan={2}>Failed to fetch the data</td></tr>
+                                            )
                                         }
                                     </tbody>
                                 </table>
@@ -103,7 +111,7 @@ export default function MentorComment() {
                                                             <td>{user.review.cie1[userKey]}</td>
                                                         </tr>
                                                     );
-                                            })) : (<tr className='nunito'><td>Failed to fetch the data</td></tr>)
+                                            })) : (<tr className='nunito'><td className='orange' colSpan={2}>Failed to fetch the data</td></tr>)
                                         }
 
 
@@ -127,7 +135,7 @@ export default function MentorComment() {
                                                             <td>{user.review.cie2[userKey]}</td>
                                                         </tr>
                                                     );
-                                            })) : (<tr className='nunito'><td>Failed to fetch the data</td></tr>)
+                                            })) : (<tr className='nunito'><td className='orange' colSpan={2}>Failed to fetch the data</td></tr>)
                                         }
                                     </tbody>
                                 </table>
@@ -148,7 +156,7 @@ export default function MentorComment() {
                                                             <td>{user.review.cie3[userKey]}</td>
                                                         </tr>
                                                     );
-                                            })) : (<tr className='nunito'><td>Failed to fetch the data</td></tr>)
+                                            })) : (<tr className='nunito'><td className='orange' colSpan={2}>Failed to fetch the data</td></tr>)
                                         }
 
                                     </tbody>
@@ -170,7 +178,7 @@ export default function MentorComment() {
                                                             <td>{user.review.see[userKey]}</td>
                                                         </tr>
                                                     );
-                                            })) : (<tr className='nunito'><td>Failed to fetch the data</td></tr>)
+                                            })) : (<tr className='nunito'><td className='orange' colSpan={2}>Failed to fetch the data</td></tr>)
                                         }
 
 
