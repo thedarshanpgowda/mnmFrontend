@@ -34,7 +34,9 @@ body {
 .NavbarBodyBlockcontent {
     display: flex;
     margin: 10px;
-    padding: 10px;
+    padding: 10px;    
+    align-items: center;
+
     border-radius: 10px;
 }
 
@@ -292,6 +294,7 @@ tbody {
     color: orange;
     padding: 15px;
     background-color: #dc143c10;
+    margin: 20px;
 }
 
 .submitbutton button{

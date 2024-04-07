@@ -50,12 +50,12 @@ export default function Teacher(props) {
                     </Chart>
                 }
             </div>
-            <Chart className="flexbox">
+            {/* <Chart className="flexbox">
                 <Chart className="nameBlock">{faculty.faculty.name + " | " + faculty.faculty.id}</Chart>
                 <div className="flexbutton">
                     <div className="button question" onClick={logouthandler}>Log-Out</div>
                 </div>
-            </Chart>
+            </Chart> */}
             <Chart className={styles.mainBlock}>
                 <Form
                     message={props.message}

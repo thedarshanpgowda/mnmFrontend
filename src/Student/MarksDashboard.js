@@ -114,6 +114,7 @@ export default function RightSubMainlanding() {
                 </div>
                 <div className="studentDetailsBlock1 nunito">
                     <div className="examinationDetails">
+                    <div className="orange nunito">This data will be stored permanently and cannot be changed in the future.</div>
                         {isLoading ? (<p className='nunito orange'>Your data is being Fetched from the server...</p>) : (
                             <div className="examBlockDetails">
                                 {/* CIE1 */}
@@ -149,7 +150,7 @@ export default function RightSubMainlanding() {
                                         </button>
                                     </div>
                                 </>) : (
-                                    <div className="success">You have already submitted CIE1 details</div>
+                                    <div className="success">You have already submitted CIE1 details.</div>
                                 )}
                                 {/* CIE2 */}
                                 {
@@ -187,7 +188,7 @@ export default function RightSubMainlanding() {
                                             </div>
                                         </>
                                     ) : (
-                                        <div className="success">You have already submitted CIE2 details</div>
+                                        <div className="success">You have already submitted CIE2 details.</div>
                                     )
                                 }
                                 {/* CIE3 */}
@@ -226,7 +227,7 @@ export default function RightSubMainlanding() {
                                             </div>
                                         </>
                                     ) : (
-                                        <div className="success">You have already submitted CIE3 details</div>
+                                        <div className="success">You have already submitted CIE3 details.</div>
                                     )
                                 }
 
@@ -267,7 +268,7 @@ export default function RightSubMainlanding() {
                                             </div>
                                         </>
                                     ) : (
-                                        <div className="success">You have already submitted SEE details</div>
+                                        <div className="success">You have already submitted SEE details.</div>
 
                                     )
                                 }

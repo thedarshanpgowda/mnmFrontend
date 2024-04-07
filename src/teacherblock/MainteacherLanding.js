@@ -1,16 +1,18 @@
 import React, { useState } from 'react'
 import Chart from '../components/Chart'
-import './Mainlanding.css'
 import { useContext } from 'react'
-import StudentProfileContext from "../context/Newcontext";
-import RightSubMainlanding from "./MarksDashboard"
-import Mainstudentblock from './Mainstudentblock';
 import { useNavigate } from "react-router-dom";
-import Updateprofile from './Updateprofile';
-import MentorComment from './MentorComment';
+import '../Student/Mainlanding.css'
+import RightSubMainlanding from '../Student/MarksDashboard';
+import Mainteacherblock from './Mainteacherblock'
+import FacultyProfileContext from '../context/FacultyContext';
+import FacultyComment from './FacultyComment';
+import SearchStudent from './SearchStudent';
 
-export default function Mainlanding() {
-    const user = useContext(StudentProfileContext)
+
+
+export default function MainteacherLanding() {
+    const faculty = useContext(FacultyProfileContext)
     const navigate = useNavigate()
     const [blockView, setBlockView] = useState({
         profile: false,
@@ -20,17 +22,20 @@ export default function Mainlanding() {
     })
 
     const logouthandler = () => {
-        localStorage.removeItem("data")
-        user.updateUser(null)
-        navigate("/mnm/")
+        localStorage.removeItem("faculty")
+        faculty.updateFaculty(null)
+        navigate("/mnm/faculty")
     }
+
     return (
         <div className="studentBlock">
             <LeftSubMainlanding blockView={blockView} setBlockView={setBlockView} logouthandler={logouthandler} />
-            {!blockView.profile && !blockView.complain && blockView.update && <RightSubMainlanding blockView={blockView} setBlockView={setBlockView} />}
-            {!blockView.profile && blockView.complain && !blockView.update && <Mainstudentblock />}
-            {blockView.profile && !blockView.complain && !blockView.update && <Updateprofile />}
-            {!blockView.profile && blockView.view && !blockView.complain && !blockView.update && <MentorComment />}
+            <div className="mainstudentBlock">
+                {/* {!blockView.profile && !blockView.complain && blockView.update && <RightSubMainlanding blockView={blockView} setBlockView={setBlockView} />} */}
+                {!blockView.profile && blockView.complain && !blockView.update && <Mainteacherblock />}
+                {blockView.profile && !blockView.complain && !blockView.update && <FacultyComment />}
+                {!blockView.profile && blockView.view && !blockView.complain && !blockView.update && <SearchStudent />}
+            </div>
         </div>
     )
 }
@@ -39,7 +44,7 @@ export default function Mainlanding() {
 
 
 export function LeftSubMainlanding(props) {
-    const user = useContext(StudentProfileContext)
+    const faculty = useContext(FacultyProfileContext)
     const hoveringEffect = () => {
         const arr = document.querySelectorAll('.NavbarBodyBlockcontent')
         // console.log(arr)
@@ -56,39 +61,40 @@ export function LeftSubMainlanding(props) {
         <div className="navigationBarBlock">
             <Chart className="HeaderNavbarcontentBlock">
                 <div className="headercontent nunito">
-                    {user.user.name} Dashboard
+                    {faculty.faculty.name}'s Dashboard
                 </div>
             </Chart>
             <Chart className="NavbarBodyContent nunito">
                 <div className="navbarcontainerTopPart">
-                <div className="NavbarBodyBlockcontent" onClick={() => {
+                    <div className="NavbarBodyBlockcontent" onClick={() => {
                         hoveringEffect()
                         props.setBlockView({ complain: true, profile: false, update: false })
                     }}>
                         <img src="https://cdn-icons-png.flaticon.com/128/9228/9228191.png" alt="see" />
-                        <div className="actualContent">Post a Complaint</div>
+                        <div className="actualContent">View Student's Querries</div>
                     </div>
                     <div className="NavbarBodyBlockcontent" onClick={() => {
                         hoveringEffect()
                         props.setBlockView({ complain: false, profile: true, update: false })
                     }}>
                         <img src="https://cdn-icons-png.flaticon.com/128/1077/1077114.png" alt="profile" />
-                        <div className="actualContent">Profile</div>
+                        <div className="actualContent">Review Students</div>
                     </div>
-                    
-                    <div className="NavbarBodyBlockcontent" onClick={() => {
+
+                    {/* <div className="NavbarBodyBlockcontent" onClick={() => {
                         hoveringEffect()
                         props.setBlockView({ complain: false, profile: false, update: true })
                     }}>
                         <img src="https://cdn-icons-png.flaticon.com/128/15368/15368706.png" alt="update" />
                         <div className="actualContent">Update CIE Details</div>
-                    </div>
+                    </div> */}
+
                     <div className="NavbarBodyBlockcontent" onClick={() => {
                         hoveringEffect()
                         props.setBlockView({ complain: false, profile: false, view: true, update: false })
                     }}>
                         <img src="https://cdn-icons-png.flaticon.com/128/14241/14241786.png" alt="update" />
-                        <div className="actualContent">Accademic History </div>
+                        <div className="actualContent">Student History </div>
                     </div>
                 </div>
                 <div className="navbarcontainerBottomPart" onClick={() => {
