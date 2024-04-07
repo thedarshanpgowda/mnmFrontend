@@ -82,7 +82,6 @@ export function LeftSubMainlanding(props) {
                     <div className="NavbarBodyBlockcontent" onClick={() => {
                         hoveringEffect()
                         const navigationBarBlock = document.querySelector('.navigationBarBlock');
-                        const navigationBarBlock = document.querySelector('.navigationBarBlock');
 
                         if (navigationBarBlock) {
                             if (window.innerWidth < 600) {
