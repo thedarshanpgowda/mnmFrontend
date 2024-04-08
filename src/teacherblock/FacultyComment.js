@@ -3,6 +3,8 @@ import axios from 'axios'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { BASE_URL } from '../helper'
 import FacultyProfileContext from '../context/FacultyContext'
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 export function StudentContainerBlock(props) {
     const faculty = useContext(FacultyProfileContext);
@@ -54,8 +56,56 @@ export function StudentContainerBlock(props) {
         setArr(props.studentView.data);
     }, []);
 
+    const generatePDF = (student) => {
+        const doc = new jsPDF();
+        let y = 10; // Initial y position for content
+
+        // Add USN
+        doc.setFontSize(14);
+        doc.text(`USN: ${student.usn}`, 14, y);
+        y += 20;
+
+        // Function to generate a table for CIE/See data
+        const generateTable = (dataObject, title) => {
+            if (!dataObject) {
+                return; // Skip if data object doesn't exist
+            }
+
+            doc.setFontSize(14);
+            doc.text(title, 14, y);
+            y += 10;
+
+            const tableData = Object.keys(dataObject).map(subject => ({
+                Subject: subject,
+                Marks: dataObject[subject]
+            }));
+
+            doc.autoTable({
+                startY: y,
+                body: tableData,
+                theme: 'striped', // Add some style to the table
+                columns: [{ header: 'Subject', dataKey: 'Subject' }, { header: 'Marks', dataKey: 'Marks' }]
+            });
+
+            y = doc.autoTable.previous.finalY + 10; // Update y position for the next section
+        };
+
+        // Generate tables for CIE/See data
+        generateTable(student.cie1, "CIE 1 Details");
+        generateTable(student.cie2, "CIE 2 Details");
+        generateTable(student.cie3, "CIE 3 Details");
+        generateTable(student.see, "See Details");
+
+        doc.save("student_report.pdf");
+    };
+
+
+
+
+
     return (
         <div className='facultycommentingblock'>
+
             <div className="studentcontrolblockforFaculty">
                 <div className="cancelBlock">
                     <img src="https://cdn-icons-png.flaticon.com/128/54/54476.png" alt="" onClick={() => {
@@ -64,6 +114,9 @@ export function StudentContainerBlock(props) {
                 </div>
                 <div className="containerstudentBlock">
                     <h2 className="nunito">{arr.usn}</h2>
+                    <button className='button btn1' onClick={() => {
+                        generatePDF(arr)
+                    }}>Generate PDF Report</button>
                     <div className="studentDetails">
                         <div className="outercoverignBlock studentInfo">
                             <div className="studentInfoContainer nunito">
@@ -391,10 +444,10 @@ export default function FacultyComment() {
                                                 .sort((a, b) => parseInt(a.usn.slice(-3)) - parseInt(b.usn.slice(-3)))
                                                 .map(student => (
                                                     <div key={student._id} className={`singlestudentblock ${((student.cie1 && student.cie1.facultyComment) || !student.cie1) &&
-                                                            ((student.cie2 && student.cie2.facultyComment) || !student.cie2) &&
-                                                            ((student.cie3 && student.cie3.facultyComment) || !student.cie3) &&
-                                                            ((student.see && student.see.facultyComment) || !student.see)
-                                                            ? "success" : ""
+                                                        ((student.cie2 && student.cie2.facultyComment) || !student.cie2) &&
+                                                        ((student.cie3 && student.cie3.facultyComment) || !student.cie3) &&
+                                                        ((student.see && student.see.facultyComment) || !student.see)
+                                                        ? "success" : ""
                                                         }`}>                                                        <p className='usnblock nunito'>{student.usn}</p>
                                                         <div className="imagecontainer" onClick={() => {
                                                             eventhandler(student)

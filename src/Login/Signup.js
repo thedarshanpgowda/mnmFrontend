@@ -6,9 +6,12 @@ import { useContext } from 'react'
 import StudentProfileContext from '../context/Newcontext'
 import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../helper'
+// import { ModalState } from '../context/Modalcontext'
+import ModalContext from '../context/Modalcontext'
 
 export default function Signup() {
     const user = useContext(StudentProfileContext)
+    const { updateModal } = useContext(ModalContext)
 
     let navigate = useNavigate();
     const [signup, setsignup] = useState({
@@ -51,6 +54,7 @@ export default function Signup() {
         e.preventDefault()
         if (stulogin.password === "" || stulogin.usn === "") {
             setError({ isError: true, message: "Please fill out the form" })
+            updateModal('Please fill all the fields', 'Fail')
             return
         }
         else {
@@ -63,14 +67,15 @@ export default function Signup() {
                 })
                 .then((res) => {
                     console.log(res)
-                    // localStorage.setItem("token",res.data.studentInfo.token)
                     console.log("object")
                     user.updateUser(res.data)
+
                     navigate("/mnm/student")
                     // console.log(user)
                     console.log("success ")
                 })
                 .catch((err) => {
+                    updateModal("User does not exist or Incorrect Password/USN",`${err.response.data.message}`)
                     navigate("/mnm/")
                     console.log("error while posting the data in faculty", err)
                 });
@@ -80,8 +85,10 @@ export default function Signup() {
     const [student, setstudent] = useState(false)
     const submithandler = async (e) => {
         e.preventDefault()
-        if (signup.name === "" || signup.password === "" || signup.email === "" || signup.phone === "" || signup.usn === "" || signup.branch === "" || signup.sem === "") {
+        if (signup.address === "" || signup.mentorId === "" || signup.dob === "" || signup.blood === "" || signup.mother === "" || signup.father === "" || signup.name === "" || signup.password === "" || signup.email === "" || signup.phone === "" || signup.usn === "" || signup.branch === "" || signup.sem === "") {
             setError({ isError: true, message: "Please fill out the form" })
+            updateModal('Please fill all the fields', 'Fail')
+
             return
         }
         else {
@@ -98,6 +105,7 @@ export default function Signup() {
                     console.log("success ", res)
                 })
                 .catch((err) => {
+                    updateModal(`${err.response.data.message}`,`${err.response.data.status}`)
                     navigate('/mnm/')
                     console.log("error while posting the data ", err)
                 });

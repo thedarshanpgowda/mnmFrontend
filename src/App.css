@@ -29,6 +29,7 @@ hr {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 10000;
 }
 
 .modal {
@@ -79,4 +80,7 @@ hr {
 .red{
   background: #ed9393ab;
   color: red;
+}
+.btn1{
+  width: 130px;
 }

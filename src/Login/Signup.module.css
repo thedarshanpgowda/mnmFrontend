@@ -34,7 +34,8 @@
   align-items: center;
   flex-direction: column;
   overflow-y: auto;
-
+  /* z-index: -10; */
+  position: relative;
 }
 
 .signup {
@@ -47,7 +48,9 @@
   justify-content: center;
   align-items: center;
   position: relative;
+ 
   top: -15px;
+  
 }
 
 .inputBlockContainer {
@@ -93,13 +96,21 @@
 }
 @media(width < 500px){
   .signup{
-    width: 80%;
+    width: 90%;
   }
   .span:first-child{
     font-size: 16px; 
   }
   .span:nth-child(2){
     font-size: 13px; 
+  }
+  .signupPage{
+    width: 95vw;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   }
   
 }

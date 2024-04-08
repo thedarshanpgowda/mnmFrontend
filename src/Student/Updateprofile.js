@@ -3,9 +3,12 @@ import { useContext } from "react";
 import StudentProfileContext from "../context/Newcontext";
 import { BASE_URL } from "../helper";
 import axios from "axios";
+import ModalContext from "../context/Modalcontext";
 
 export default function Updateprofile() {
     const user = useContext(StudentProfileContext);
+    const { updateModal } = useContext(ModalContext)
+
     const [isEditable, setIsEditable] = useState(false);
     const [error, setError] = useState("");
     const [message, setMessage] = useState("");
@@ -63,6 +66,8 @@ export default function Updateprofile() {
             setError("Please fill in all fields");
             setMessage("")
             setIsEditable(true)
+            updateModal("Please dont leave any fields Empty", "Failed to Process the data")
+
             return 'true';
         } else {
             console.log(userInfo);
@@ -77,10 +82,12 @@ export default function Updateprofile() {
                     setMessage("Successfully updated the data")
                     setUserInfo(p => ({ ...p, isUpdated: false }))
                     user.updateUser(res.data)
+                    updateModal(res.data.message, res.data.status)
                     return 'false'
                 })
                 .catch((e) => {
                     console.log(e)
+                    updateModal(e.response?.data.message, e.response.data.status)
                     setError("Unable to update the data");
                     return 'true'
 
@@ -100,9 +107,9 @@ export default function Updateprofile() {
                             onClick={() => {
                                 const navigationBarBlock = document.querySelector('.navigationBarBlock');
                                 if (navigationBarBlock) {
-                                  navigationBarBlock.style.marginTop = "0%";
+                                    navigationBarBlock.style.marginTop = "0%";
                                 }
-                              }}
+                            }}
                         />
                     </div>
                 </div>
@@ -179,7 +186,7 @@ export default function Updateprofile() {
                                 <input
                                     className="studentBlockContainer"
                                     name="password"
-                                    
+
                                     onChange={handleInputChange}
                                     readOnly={!isEditable}
                                     placeholder="Password"
