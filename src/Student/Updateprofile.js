@@ -102,7 +102,7 @@ export default function Updateprofile() {
                 <div className="studentDataInfoNavbar">
                     <div className="imageContainerBlock">
                         <img
-                            src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D"
+                            src={user.user.img || "https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D"}
                             alt="profile"
                             onClick={() => {
                                 const navigationBarBlock = document.querySelector('.navigationBarBlock');

@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../helper'
 // import { ModalState } from '../context/Modalcontext'
 import ModalContext from '../context/Modalcontext'
+import Registeration from './Registeration'
 
 export default function Signup() {
     const user = useContext(StudentProfileContext)
@@ -16,11 +17,17 @@ export default function Signup() {
     let navigate = useNavigate();
     const [signup, setsignup] = useState({
         name: "",
-        password: "",
         email: "",
         phone: "",
-        confirmPassword: "",
         usn: "",
+        password: "",
+        confirmPassword: "",
+        mentorId: "",
+        dob: "",
+        addr: "",
+        father: "",
+        mother: "",
+        blood: "",
         branch: "",
         sem: ""
     })
@@ -75,7 +82,7 @@ export default function Signup() {
                     console.log("success ")
                 })
                 .catch((err) => {
-                    updateModal("User does not exist or Incorrect Password/USN",`${err.response.data.message}`)
+                    updateModal("User does not exist or Incorrect Password/USN", `${err.response.data.message}`)
                     navigate("/mnm/")
                     console.log("error while posting the data in faculty", err)
                 });
@@ -105,7 +112,7 @@ export default function Signup() {
                     console.log("success ", res)
                 })
                 .catch((err) => {
-                    updateModal(`${err.response.data.message}`,`${err.response.data.status}`)
+                    updateModal(`${err.response.data.message}`, `${err.response.data.status}`)
                     navigate('/mnm/')
                     console.log("error while posting the data ", err)
                 });
@@ -119,85 +126,8 @@ export default function Signup() {
                     {error.isError && <Chart className={styles.inputBlockContainer + " question red"}>
                         {error.message}
                     </Chart>}
-                    {student ? (<>
-                        <span className={styles.span}>Sign-Up to Student dashboard</span>
-
-                        <Chart isset="true" val="10px" className={styles.inputBlockContainer}>
-                            <input type="text" id="name" value={signup.name} onChange={(e) => setsignup({ ...signup, name: e.target.value })} className={styles.inputBlock} placeholder='Name' required />
-                        </Chart>
-                        <Chart isset="true" val="10px" className={styles.inputBlockContainer}>
-                            <input type="email" id="email" value={signup.email} onChange={(e) => setsignup({ ...signup, email: e.target.value })} className={styles.inputBlock} placeholder='Email' required />
-                        </Chart>
-                        <Chart isset="true" val="10px" className={styles.inputBlockContainer}>
-                            <input type="number" id="phone" value={signup.phone} onChange={(e) => setsignup({ ...signup, phone: e.target.value })} className={styles.inputBlock} placeholder='Number' required />
-                        </Chart>
-                        <Chart isset="true" val="10px" className={styles.inputBlockContainer}>
-                            <input type="text" id="usn" value={signup.usn} onChange={(e) => setsignup({ ...signup, usn: e.target.value.toUpperCase() })} className={styles.inputBlock} placeholder='USN' required />
-                        </Chart>
-                        <Chart isset="true" val="10px" className={styles.inputBlockContainer}>
-                            <input type="password" id="password" value={signup.password} onChange={(e) => setsignup({ ...signup, password: e.target.value })} className={styles.inputBlock} placeholder='Password' required />
-                        </Chart>
-                        <Chart isset="true" val="10px" className={styles.inputBlockContainer}>
-                            <input type="password" id="cpassword" value={signup.confirmPassword} onChange={(e) => setsignup({ ...signup, confirmPassword: e.target.value })} className={styles.inputBlock} placeholder='Confirm Password' required />
-                        </Chart>
-
-                        <Chart isset="true" val="10px" className={styles.inputBlockContainer}>
-                            <input type="text" id="mid" value={signup.mentorId} onChange={(e) => setsignup({ ...signup, mentorId: e.target.value })} className={styles.inputBlock} placeholder='Mentor ID' required />
-                        </Chart>
-
-                        <Chart isset="true" val="10px" className={styles.inputBlockContainer}>
-                            <input type="date" id="dob" value={signup.dob} onChange={(e) => setsignup({ ...signup, dob: e.target.value })} className={styles.inputBlock} placeholder='Date of Birth' required />
-                        </Chart>
-
-
-                        <Chart isset="true" val="10px" className={styles.inputBlockContainer}>
-                            <input type="text" id="addr" value={signup.address} onChange={(e) => setsignup({ ...signup, address: e.target.value })} className={styles.inputBlock} placeholder='Address' required />
-                        </Chart>
-                        <Chart isset="true" val="10px" className={styles.inputBlockContainer}>
-                            <input type="text" id="father" value={signup.father} onChange={(e) => setsignup({ ...signup, father: e.target.value })} className={styles.inputBlock} placeholder='Father Name' required />
-                        </Chart>
-
-                        <Chart isset="true" val="10px" className={styles.inputBlockContainer}>
-                            <input type="text" id="mother" value={signup.mother} onChange={(e) => setsignup({ ...signup, mother: e.target.value })} className={styles.inputBlock} placeholder='Mother Name' required />
-                        </Chart>
-
-                        <Chart isset="true" val="10px" className={styles.inputBlockContainer}>
-                            <input type="blood" id="blood" value={signup.blood} onChange={(e) => setsignup({ ...signup, blood: e.target.value })} className={styles.inputBlock} placeholder='Blood group' required />
-                        </Chart>
-
-
-                        <Chart isset="true" val="10px" className={styles.inputBlockContainer}>
-                            <select id="branch" className={styles.inputBlock1} onChange={(e) => setsignup({ ...signup, branch: e.target.value })} required>
-                                <option value="">Select your branch</option>
-                                <option value="cse">Computer Science and Engineering</option>
-                                <option value="ise">Information Science and Engineering</option>
-                                <option value="ece">Electronics & Communication and Engineering</option>
-                                <option value="eee">Electronics & Electricals and Engineering</option>
-                                <option value="cv">Civil Engineering</option>
-                                <option value="mb">Mechanical Engineering</option>
-                                <option value="ei">Electricals and Information Engineering</option>
-                                <option value="ai">Artificial Intelligence and Engineering</option>
-                                <option value="csbs">Computer Science and Business Studies</option>
-                            </select>
-                        </Chart>
-                        <Chart isset="true" val="10px" className={styles.inputBlockContainer}>
-                            <select id="sem" className={styles.inputBlock1} onChange={(e) => setsignup({ ...signup, sem: e.target.value })} required>
-                                <option value="">Select your semester</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                            </select>
-                        </Chart>
-                        <Chart isset="true" val="10px" className={styles.inputBlockContainer}>
-                            <input type="submit" id="submit" className={styles.inputBlock1 + " " + styles.submit} value="Submit" onClick={submithandler} />
-                        </Chart>
-                        <span className={styles.span} >Already have an account <button onClick={() => setstudent(false)}>Log-In</button>?</span>
-                    </>
+                    {student ? (
+                        <Registeration signup={signup} setsignup={setsignup} setstudent={setstudent} submithandler={submithandler} setError = {setError}/>
                     ) : (<>
                         <span className={styles.span}>Log-In to Student dashboard</span>
 

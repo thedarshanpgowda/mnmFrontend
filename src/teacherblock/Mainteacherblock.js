@@ -34,7 +34,7 @@ export default function Mainteacherblock() {
   }, [faculty.faculty.isSuccess, navigate])
 
   const updateFac = (res) => {
-    console.log(res.data.data)
+    console.log(res)
     setState(res.data.data)
   }
 

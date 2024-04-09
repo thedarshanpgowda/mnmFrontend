@@ -4,7 +4,8 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import { BASE_URL } from '../helper'
 import FacultyProfileContext from '../context/FacultyContext'
 import jsPDF from 'jspdf';
-import 'jspdf-autotable';
+
+
 
 export function StudentContainerBlock(props) {
     const faculty = useContext(FacultyProfileContext);
@@ -52,20 +53,114 @@ export function StudentContainerBlock(props) {
         }
     };
 
+
+
     useEffect(() => {
         setArr(props.studentView.data);
     }, []);
 
+
+    const returnsAvalue = (val) => {
+        const obj = {
+            val: val,
+            name: "Name",
+            email: "E-mail",
+            phone: "Phone Number",
+            usn: "USN",
+            password: "Password",
+            mentorId: "Mentor ID",
+            dob: "Date Of Birth",
+            addr: "Address",
+            address: "Address",
+            father: "Father Name",
+            mother: "Mother Name",
+            blood: "Blood Group",
+            branch: "Branch",
+            sem: "Semester",
+            studentCie1Attendence: "Student Attendence",
+            studentCie2Attendence: "Student Attendence",
+            studentCie3Attendence: "Student Attendence",
+            studentSeeAttendence: "Student Attendence",
+            studentMood: "Student's Mood",
+            studentComment: "Student Comment",
+            facultyComment: "Faculty Comment"
+        }
+        return obj[val]
+    }
+
     const generatePDF = (student) => {
+        console.log(student);
         const doc = new jsPDF();
         let y = 10; // Initial y position for content
+
+        // Add student image
+        if (student.studentInfo && student.studentInfo.img) {
+            const imgData = student.studentInfo.img; // Assuming studentInfo.img is a valid image data URL
+            doc.addImage(imgData, 'JPEG', 15, 15, 30, 30); // Adjust position and size as needed
+        }
+
+        // Adjust y position after adding the image
+        y += 40;
+
+        // Add name
+        y += 10;
+        doc.setFontSize(14);
+        doc.text(`Name: ${student.studentInfo.name}`, 14, y);
+        y += 9;
 
         // Add USN
         doc.setFontSize(14);
         doc.text(`USN: ${student.usn}`, 14, y);
         y += 20;
 
-        // Function to generate a table for CIE/See data
+        // Function to filter out unwanted fields
+        const filterFields = (obj) => {
+            const filteredObj = { ...obj };
+            delete filteredObj._id;
+            delete filteredObj.__v;
+            delete filteredObj.name;
+            delete filteredObj.usn;
+            delete filteredObj.password;
+            delete filteredObj.img;
+            return filteredObj;
+        };
+
+        const generateTableForInfo = (dataObject, title) => {
+            if (!dataObject) {
+                return; // Skip if data object doesn't exist
+            }
+
+            doc.setFontSize(14);
+            doc.text(title, 14, y);
+            y += 10;
+
+            // Filter out unwanted fields
+            const filteredDataObject = filterFields(dataObject);
+
+            const tableData = Object.keys(filteredDataObject).map(subject => ({
+                Subject: returnsAvalue(subject) || subject, // Display human-readable key name
+                Marks: filteredDataObject[subject]
+            }));
+
+            const tableHeight = doc.autoTable.previous.finalY - y + 10; // Calculate table height
+
+            // Check if there's enough space on the current page for the table
+            if (y + tableHeight > doc.internal.pageSize.height) {
+                // Start the table on the next page
+                doc.addPage();
+                y = 10; // Reset y position for the new page
+            }
+
+            doc.autoTable({
+                startY: y,
+                body: tableData,
+                theme: 'striped', // Add some style to the table
+                columns: [{ header: 'Attribute', dataKey: 'Subject' }, { header: 'Value', dataKey: 'Marks' }]
+            });
+
+            y = doc.autoTable.previous.finalY + 10; // Update y position for the next section
+        };
+
         const generateTable = (dataObject, title) => {
             if (!dataObject) {
                 return; // Skip if data object doesn't exist
@@ -75,10 +170,22 @@ export function StudentContainerBlock(props) {
             doc.text(title, 14, y);
             y += 10;
 
-            const tableData = Object.keys(dataObject).map(subject => ({
-                Subject: subject,
-                Marks: dataObject[subject]
+            // Filter out unwanted fields
+            const filteredDataObject = filterFields(dataObject);
+
+            const tableData = Object.keys(filteredDataObject).map(subject => ({
+                Subject: returnsAvalue(subject) || subject, // Display human-readable key name
+                Marks: filteredDataObject[subject]
             }));
+
+            const tableHeight = doc.autoTable.previous.finalY - y + 10; // Calculate table height
+
+            // Check if there's enough space on the current page for the table
+            if (y + tableHeight > doc.internal.pageSize.height) {
+                // Start the table on the next page
+                doc.addPage();
+                y = 10; // Reset y position for the new page
+            }
 
             doc.autoTable({
                 startY: y,
@@ -90,14 +197,18 @@ export function StudentContainerBlock(props) {
             y = doc.autoTable.previous.finalY + 10; // Update y position for the next section
         };
 
+
         // Generate tables for CIE/See data
+        generateTableForInfo(student.studentInfo, "Student Details");
         generateTable(student.cie1, "CIE 1 Details");
         generateTable(student.cie2, "CIE 2 Details");
         generateTable(student.cie3, "CIE 3 Details");
         generateTable(student.see, "See Details");
 
-        doc.save("student_report.pdf");
+        doc.save(`${student.usn}.pdf`);
     };
+
+
 
 
 
@@ -137,7 +248,7 @@ export function StudentContainerBlock(props) {
                                             } else {
                                                 return (
                                                     <tr key={userKey} className='nunito'>
-                                                        <td>{userKey.charAt(0).toUpperCase() + userKey.substring(1)}</td>
+                                                        <td>{returnsAvalue(userKey) || userKey}</td>
                                                         <td>
                                                             {userKey === 'facultyComment' && arr.cie1[userKey] !== "" ? (
                                                                 arr.cie1[userKey]
@@ -198,7 +309,7 @@ export function StudentContainerBlock(props) {
                                             ) return null;
                                             return (
                                                 <tr key={userKey} className='nunito'>
-                                                    <td>{userKey.charAt(0).toUpperCase() + userKey.substring(1)}</td>
+                                                    <td>{returnsAvalue(userKey) || userKey}</td>
                                                     <td>
                                                         {userKey === 'facultyComment' && arr.cie2[userKey] !== "" ? (
                                                             arr.cie2[userKey]
@@ -254,7 +365,7 @@ export function StudentContainerBlock(props) {
                                             ) return null;
                                             return (
                                                 <tr key={userKey} className='nunito'>
-                                                    <td>{userKey.charAt(0).toUpperCase() + userKey.substring(1)}</td>
+                                                    <td>{returnsAvalue(userKey) || userKey}</td>
                                                     <td>
                                                         {userKey === 'facultyComment' && arr.cie3[userKey] !== "" ? (
                                                             arr.cie3[userKey]
@@ -310,7 +421,7 @@ export function StudentContainerBlock(props) {
                                             ) return null;
                                             return (
                                                 <tr key={userKey} className='nunito'>
-                                                    <td>{userKey.charAt(0).toUpperCase() + userKey.substring(1)}</td>
+                                                    <td>{returnsAvalue(userKey) || userKey}</td>
                                                     <td>
                                                         {userKey === 'facultyComment' && arr.see[userKey] !== "" ? (
                                                             arr.see[userKey]
@@ -381,7 +492,7 @@ export default function FacultyComment() {
                         Authorization: `Bearer ${faculty.faculty.token}`
                     }
                 }).then(res => {
-                    // console.log(res.data.data)
+                    console.log(res.data.data)
                     setstudentdata(res.data.data)
                 })
             }

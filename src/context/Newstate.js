@@ -22,7 +22,8 @@ export default function Newstate(props) {
                 mother: undefined,
                 father: undefined,
                 token: undefined,
-                sem : undefined
+                sem : undefined,
+                img : undefined,
             };
         }
     });
@@ -43,6 +44,7 @@ export default function Newstate(props) {
                 branch: undefined,
                 dob: undefined,
                 mentorId: undefined,
+                img : undefined,
                 addr: undefined,
                 sem: undefined,
                 token: undefined,
@@ -72,6 +74,7 @@ export default function Newstate(props) {
                 mother: data.studentInfo.data.mother || undefined,
                 father: data.studentInfo.data.father || undefined,
                 isSuccess: true,
+                img : data.studentInfo.data.img,
                 token: data.studentInfo.token || undefined
             };
             localStorage.setItem("data", JSON.stringify(userData));
@@ -85,6 +88,7 @@ export default function Newstate(props) {
                 email: undefined,
                 dept: undefined,
                 branch: undefined,
+                img : undefined,
                 phone: undefined,
                 dob: undefined,
                 mentorId: undefined,

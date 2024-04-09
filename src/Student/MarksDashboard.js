@@ -65,7 +65,7 @@ export default function RightSubMainlanding() {
                     }
                 })
                     .then(res => {
-                        console.log(res.data.reviewData)
+                        // console.log(res.data.reviewData)
                         setUser(res.data.reviewData)
                         if (res.data.reviewData.cie1) {
                             setUser({ iscie1: false, iscie2: true, iscie3: true, issee: true })
@@ -100,13 +100,13 @@ export default function RightSubMainlanding() {
             <div className="mainnavbartop">
                 <div className="studentDataInfoNavbar">
                     <div className="imageContainerBlock">
-                        <img src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D" alt="profile" 
-                        onClick={() => {
-                            const navigationBarBlock = document.querySelector('.navigationBarBlock');
-                            if (navigationBarBlock) {
-                                navigationBarBlock.style.marginTop = "0%";
-                            }
-                        }} />
+                        <img src={user1.user.img || "https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D"} alt="profile"
+                            onClick={() => {
+                                const navigationBarBlock = document.querySelector('.navigationBarBlock');
+                                if (navigationBarBlock) {
+                                    navigationBarBlock.style.marginTop = "0%";
+                                }
+                            }} />
                     </div>
                 </div>
             </div>
@@ -130,21 +130,42 @@ export default function RightSubMainlanding() {
                                         <div className="nunito completedetails completedetailscie1">
                                             <div className="subjectHandler">
                                                 <div className="inputBlockContainer">
-                                                    <input type="text" placeholder='XXXXX01 marks' onChange={(e) => handleInputChange(e, 'cie1', 'XXXXX0')} />
+                                                    <input type="text" placeholder={`${user1.user.sem}01 marks`} onChange={(e) => handleInputChange(e, 'cie1', `${user1.user.sem}01`)} />
                                                 </div>
                                                 <div className="inputBlockContainer">
-                                                    <input type="text" placeholder='XXXXX02 marks' onChange={(e) => handleInputChange(e, 'cie1', 'XXXXX0')} />
+                                                    <input type="text" placeholder={`${user1.user.sem}02 marks`} onChange={(e) => handleInputChange(e, 'cie1', `${user1.user.sem}02`)} />
                                                 </div>
                                                 <div className="inputBlockContainer">
-                                                    <input type="text" placeholder='XXXXX03 marks' onChange={(e) => handleInputChange(e, 'cie1', '21CS603')} />
+                                                    <input type="text" placeholder={`${user1.user.sem}03 marks`} onChange={(e) => handleInputChange(e, 'cie1', `${user1.user.sem}03`)} />
                                                 </div>
                                                 <div className="inputBlockContainer">
-                                                    <input type="text" placeholder='XXXXX04 marks' onChange={(e) => handleInputChange(e, 'cie1', '21CS604')} />
+                                                    <input type="text" placeholder={`${user1.user.sem}04 marks`} onChange={(e) => handleInputChange(e, 'cie1', `${user1.user.sem}04`)} />
                                                 </div>
                                                 <div className="inputBlockContainer">
-                                                    <input type="text" placeholder='XXXXX05 marks' onChange={(e) => handleInputChange(e, 'cie1', '21CS605')} />
+                                                    <input type="text" placeholder={`${user1.user.sem}05 marks`} onChange={(e) => handleInputChange(e, 'cie1', `${user1.user.sem}05`)} />
                                                 </div>
                                             </div>
+                                            <div className="reasonsFor">
+                                                <div className="inputBlockContainer3">
+                                                    <textarea type="text" placeholder='Enter your Attendence till CIE1' onChange={(e) => handleInputChange(e, 'cie1', "studentCie1Attendence")} />
+                                                </div>
+                                            </div>
+                                            <div className="reasonsFor">
+                                                <div className="inputBlockContainer3">
+                                                    <select className='select' onChange={(e) => handleInputChange(e, 'cie1', "studentMood")}>
+                                                        <option value="">How was your mood on the day of internals?</option>
+                                                        <option value="happy">Happy</option>
+                                                        <option value="sad">Sad</option>
+                                                        <option value="neutral">Neutral</option>
+                                                        <option value="excited">Excited</option>
+                                                        <option value="anxious">Anxious</option>
+                                                        <option value="calm">Calm</option>
+                                                        {/* Add more options as needed */}
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
                                             <div className="reasonsFor">
                                                 <div className="inputBlockContainer2">
                                                     <textarea type="text" placeholder='Enter your reason' onChange={(e) => handleInputChange(e, 'cie1', "studentComment")} />
@@ -167,19 +188,39 @@ export default function RightSubMainlanding() {
                                                 <div className="nunito completedetails completedetailscie1">
                                                     <div className="subjectHandler">
                                                         <div className="inputBlockContainer">
-                                                            <input type="text" placeholder='XXXXX01 marks' onChange={(e) => handleInputChange(e, 'cie2', 'XXXXX0')} />
+                                                            <input type="text" placeholder={`${user1.user.sem}01 marks`} onChange={(e) => handleInputChange(e, 'cie2', `${user1.user.sem}01`)} />
                                                         </div>
                                                         <div className="inputBlockContainer">
-                                                            <input type="text" placeholder='XXXXX02 marks' onChange={(e) => handleInputChange(e, 'cie2', 'XXXXX0')} />
+                                                            <input type="text" placeholder={`${user1.user.sem}02 marks`} onChange={(e) => handleInputChange(e, 'cie2', `${user1.user.sem}02`)} />
                                                         </div>
                                                         <div className="inputBlockContainer">
-                                                            <input type="text" placeholder='XXXXX03 marks' onChange={(e) => handleInputChange(e, 'cie2', '21CS603')} />
+                                                            <input type="text" placeholder={`${user1.user.sem}03 marks`} onChange={(e) => handleInputChange(e, 'cie2', `${user1.user.sem}03`)} />
                                                         </div>
                                                         <div className="inputBlockContainer">
-                                                            <input type="text" placeholder='XXXXX04 marks' onChange={(e) => handleInputChange(e, 'cie2', '21CS604')} />
+                                                            <input type="text" placeholder={`${user1.user.sem}04 marks`} onChange={(e) => handleInputChange(e, 'cie2', `${user1.user.sem}04`)} />
                                                         </div>
                                                         <div className="inputBlockContainer">
-                                                            <input type="text" placeholder='XXXXX05 marks' onChange={(e) => handleInputChange(e, 'cie2', '21CS605')} />
+                                                            <input type="text" placeholder={`${user1.user.sem}05 marks`} onChange={(e) => handleInputChange(e, 'cie2', `${user1.user.sem}05`)} />
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="reasonsFor">
+                                                        <div className="inputBlockContainer3">
+                                                            <textarea type="text" placeholder='Enter your Attendence till CIE2' onChange={(e) => handleInputChange(e, 'cie2', "studentCie2Attendence")} />
+                                                        </div>
+                                                    </div>
+                                                    <div className="reasonsFor">
+                                                        <div className="inputBlockContainer3">
+                                                            <select className='select' onChange={(e) => handleInputChange(e, 'cie2', "studentMood")}>
+                                                                <option value="">How was your mood on the day of internals?</option>
+                                                                <option value="happy">Happy</option>
+                                                                <option value="sad">Sad</option>
+                                                                <option value="neutral">Neutral</option>
+                                                                <option value="excited">Excited</option>
+                                                                <option value="anxious">Anxious</option>
+                                                                <option value="calm">Calm</option>
+                                                                {/* Add more options as needed */}
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div className="reasonsFor">
@@ -206,19 +247,39 @@ export default function RightSubMainlanding() {
                                                 <div className="nunito completedetails completedetailscie1">
                                                     <div className="subjectHandler">
                                                         <div className="inputBlockContainer">
-                                                            <input type="text" placeholder='XXXXX01 marks' onChange={(e) => handleInputChange(e, 'cie3', 'XXXXX0')} />
+                                                            <input type="text" placeholder={`${user1.user.sem}01 marks`} onChange={(e) => handleInputChange(e, 'cie3', `${user1.user.sem}01`)} />
                                                         </div>
                                                         <div className="inputBlockContainer">
-                                                            <input type="text" placeholder='XXXXX02 marks' onChange={(e) => handleInputChange(e, 'cie3', 'XXXXX0')} />
+                                                            <input type="text" placeholder={`${user1.user.sem}02 marks`} onChange={(e) => handleInputChange(e, 'cie3', `${user1.user.sem}02`)} />
                                                         </div>
                                                         <div className="inputBlockContainer">
-                                                            <input type="text" placeholder='XXXXX03 marks' onChange={(e) => handleInputChange(e, 'cie3', '21CS603')} />
+                                                            <input type="text" placeholder={`${user1.user.sem}03 marks`} onChange={(e) => handleInputChange(e, 'cie3', `${user1.user.sem}03`)} />
                                                         </div>
                                                         <div className="inputBlockContainer">
-                                                            <input type="text" placeholder='XXXXX04 marks' onChange={(e) => handleInputChange(e, 'cie3', '21CS604')} />
+                                                            <input type="text" placeholder={`${user1.user.sem}04 marks`} onChange={(e) => handleInputChange(e, 'cie3', `${user1.user.sem}04`)} />
                                                         </div>
                                                         <div className="inputBlockContainer">
-                                                            <input type="text" placeholder='XXXXX05 marks' onChange={(e) => handleInputChange(e, 'cie3', '21CS605')} />
+                                                            <input type="text" placeholder={`${user1.user.sem}05 marks`} onChange={(e) => handleInputChange(e, 'cie3', `${user1.user.sem}05`)} />
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="reasonsFor">
+                                                        <div className="inputBlockContainer3">
+                                                            <textarea type="text" placeholder='Enter your Attendence till CIE3' onChange={(e) => handleInputChange(e, 'cie3', "studentCie3Attendence")} />
+                                                        </div>
+                                                    </div>
+                                                    <div className="reasonsFor">
+                                                        <div className="inputBlockContainer3">
+                                                            <select className='select' onChange={(e) => handleInputChange(e, 'cie3', "studentMood")}>
+                                                                <option value="">How was your mood on the day of internals?</option>
+                                                                <option value="happy">Happy</option>
+                                                                <option value="sad">Sad</option>
+                                                                <option value="neutral">Neutral</option>
+                                                                <option value="excited">Excited</option>
+                                                                <option value="anxious">Anxious</option>
+                                                                <option value="calm">Calm</option>
+                                                                {/* Add more options as needed */}
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div className="reasonsFor">
@@ -247,19 +308,39 @@ export default function RightSubMainlanding() {
                                                 <div className="nunito completedetails completedetailscie1">
                                                     <div className="subjectHandler">
                                                         <div className="inputBlockContainer">
-                                                            <input type="text" placeholder='XXXXX01 marks' onChange={(e) => handleInputChange(e, 'see', 'XXXXX0')} />
+                                                            <input type="text" placeholder={`${user1.user.sem}01 marks`} onChange={(e) => handleInputChange(e, 'see', `${user1.user.sem}01`)} />
                                                         </div>
                                                         <div className="inputBlockContainer">
-                                                            <input type="text" placeholder='XXXXX02 marks' onChange={(e) => handleInputChange(e, 'see', 'XXXXX0')} />
+                                                            <input type="text" placeholder={`${user1.user.sem}02 marks`} onChange={(e) => handleInputChange(e, 'see', `${user1.user.sem}02`)} />
                                                         </div>
                                                         <div className="inputBlockContainer">
-                                                            <input type="text" placeholder='XXXXX03 marks' onChange={(e) => handleInputChange(e, 'see', '21CS603')} />
+                                                            <input type="text" placeholder={`${user1.user.sem}03 marks`} onChange={(e) => handleInputChange(e, 'see', `${user1.user.sem}03`)} />
                                                         </div>
                                                         <div className="inputBlockContainer">
-                                                            <input type="text" placeholder='XXXXX04 marks' onChange={(e) => handleInputChange(e, 'see', '21CS604')} />
+                                                            <input type="text" placeholder={`${user1.user.sem}04 marks`} onChange={(e) => handleInputChange(e, 'see', `${user1.user.sem}04`)} />
                                                         </div>
                                                         <div className="inputBlockContainer">
-                                                            <input type="text" placeholder='XXXXX05 marks' onChange={(e) => handleInputChange(e, 'see', '21CS605')} />
+                                                            <input type="text" placeholder={`${user1.user.sem}05 marks`} onChange={(e) => handleInputChange(e, 'see', `${user1.user.sem}05`)} />
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="reasonsFor">
+                                                        <div className="inputBlockContainer3">
+                                                            <textarea type="text" placeholder='Enter your Attendence till SEE' onChange={(e) => handleInputChange(e, 'see', "studentSeeAttendence")} />
+                                                        </div>
+                                                    </div>
+                                                    <div className="reasonsFor">
+                                                        <div className="inputBlockContainer3">
+                                                            <select className='select' onChange={(e) => handleInputChange(e, 'see', "studentMood")}>
+                                                                <option value="">How was your mood on the day of internals?</option>
+                                                                <option value="happy">Happy</option>
+                                                                <option value="sad">Sad</option>
+                                                                <option value="neutral">Neutral</option>
+                                                                <option value="excited">Excited</option>
+                                                                <option value="anxious">Anxious</option>
+                                                                <option value="calm">Calm</option>
+                                                                {/* Add more options as needed */}
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div className="reasonsFor">
@@ -267,6 +348,7 @@ export default function RightSubMainlanding() {
                                                             <textarea type="text" placeholder='Enter your reason' onChange={(e) => handleInputChange(e, 'see', "studentComment")} />
                                                         </div>
                                                     </div>
+
                                                 </div>
                                                 <button className="cie1Submit" onClick={() => cieSubmit('see')}>
                                                     Submit

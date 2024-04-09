@@ -102,7 +102,7 @@ function Mainstudentblock() {
     <div className="rightblockcontainer">
       <div className="profilePic">
         <img
-          src="https://cdn-icons-png.flaticon.com/128/64/64572.png"
+          src={user.user.img || "https://cdn-icons-png.flaticon.com/128/64/64572.png"}
           alt="profilelink"
           className='profilepic'
           onClick={() => {

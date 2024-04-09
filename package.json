@@ -7,6 +7,8 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.7",
+    "image-to-uri": "^1.0.0",
+    "image2uri": "^2.1.2",
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.8.2",
     "react": "^18.2.0",

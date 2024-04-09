@@ -34,8 +34,6 @@ export default function MainteacherLanding() {
                 {/* {!blockView.profile && !blockView.complain && blockView.update && <RightSubMainlanding blockView={blockView} setBlockView={setBlockView} />} */}
                 {!blockView.profile && blockView.complain && !blockView.update && <Mainteacherblock />}
                 {blockView.profile && !blockView.complain && !blockView.update && <FacultyComment />}
-                {/* {!blockView.profile && blockView.view && !blockView.complain && !blockView.update && <PDFGenerator */}
- />}
             </div>
         </div>
     )

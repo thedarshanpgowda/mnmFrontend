@@ -38,13 +38,41 @@ export default function MentorComment() {
         main()
     }, [])
 
+    const returnsAvalue = (val) => {
+        const obj = {
+            val: val,
+            name: "Name",
+            email: "E-mail",
+            phone: "Phone Number",
+            usn: "USN",
+            password: "Password",
+            mentorId: "Mentor ID",
+            dob: "Date Of Birth",
+            addr: "Address",
+            address: "Address",
+            father: "Father Name",
+            mother: "Mother Name",
+            blood: "Blood Group",
+            branch: "Branch",
+            sem: "Semester",
+            studentCie1Attendence: "Student Attendence",
+            studentCie2Attendence: "Student Attendence",
+            studentCie3Attendence: "Student Attendence",
+            studentSeeAttendence: "Student Attendence",
+            studentMood: "Student's Mood",
+            studentComment: "Student Comment",
+            facultyComment: "Faculty Comment"
+        }
+        return obj[val]
+    }
+
     return (
         <div className="updateProfileBlock">
             <div className="mainnavbartop">
                 <div className="studentDataInfoNavbar">
                     <div className="imageContainerBlock">
                         <img
-                            src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D"
+                            src={user1.user.img || "https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D"}
                             alt="profile"
                             onClick={() => {
                                 const navigationBarBlock = document.querySelector('.navigationBarBlock');
@@ -77,12 +105,12 @@ export default function MentorComment() {
                                     <tbody>
                                         {
                                             user.student ? (Object.keys(user.student).map(userKey => {
-                                                if (userKey === '__v' || userKey === '_v' || userKey === '_id' || userKey === 'password') {
+                                                if (userKey === '__v' || userKey === '_v' || userKey === '_id' || userKey === 'img' || userKey === 'password') {
                                                     return null;
                                                 } else {
                                                     return (
                                                         <tr key={userKey} className='nunito'>
-                                                            <td>{userKey.charAt(0).toUpperCase() + userKey.substring(1)}</td>
+                                                            <td>{returnsAvalue(userKey)}</td>
                                                             <td>{user.student[userKey]}</td>
                                                         </tr>
                                                     );
@@ -107,7 +135,7 @@ export default function MentorComment() {
                                                 else
                                                     return (
                                                         <tr key={userKey} className='nunito'>
-                                                            <td>{userKey.charAt(0).toUpperCase() + userKey.substring(1)}</td>
+                                                            <td>{returnsAvalue(userKey) || userKey}</td>
                                                             <td>{user.review.cie1[userKey]}</td>
                                                         </tr>
                                                     );
@@ -131,7 +159,7 @@ export default function MentorComment() {
                                                 else
                                                     return (
                                                         <tr key={userKey} className='nunito'>
-                                                            <td>{userKey.charAt(0).toUpperCase() + userKey.substring(1)}</td>
+                                                            <td>{returnsAvalue(userKey) || userKey}</td>
                                                             <td>{user.review.cie2[userKey]}</td>
                                                         </tr>
                                                     );
@@ -152,7 +180,7 @@ export default function MentorComment() {
                                                 else
                                                     return (
                                                         <tr key={userKey} className='nunito'>
-                                                            <td>{userKey.charAt(0).toUpperCase() + userKey.substring(1)}</td>
+                                                            <td>{returnsAvalue(userKey) || userKey}</td>
                                                             <td>{user.review.cie3[userKey]}</td>
                                                         </tr>
                                                     );
@@ -174,7 +202,7 @@ export default function MentorComment() {
                                                 else
                                                     return (
                                                         <tr key={userKey} className='nunito'>
-                                                            <td>{userKey.charAt(0).toUpperCase() + userKey.substring(1)}</td>
+                                                            <td>{returnsAvalue(userKey) || userKey}</td>
                                                             <td>{user.review.see[userKey]}</td>
                                                         </tr>
                                                     );
