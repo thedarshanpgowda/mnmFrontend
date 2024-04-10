@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useContext } from "react";
 import StudentProfileContext from "../context/Newcontext";
-import { BASE_URL } from "../helper";
+import { BASE_URL, universalImage } from "../helper";
 import axios from "axios";
 import ModalContext from "../context/Modalcontext";
 
 export default function Updateprofile() {
     const user = useContext(StudentProfileContext);
     const { updateModal } = useContext(ModalContext)
-
+    const imageRef = useRef()
+    const [url, seturl] = useState("")
     const [isEditable, setIsEditable] = useState(false);
     const [error, setError] = useState("");
     const [message, setMessage] = useState("");
@@ -95,6 +96,49 @@ export default function Updateprofile() {
         }
     };
 
+    useEffect(() => {
+        seturl(user.user.img)
+    }, [])
+
+    const handleDivClick = () => {
+        if (isEditable) {
+            imageRef.current.click()
+        }
+        else return
+    }
+
+    const onChangeHandler = async (e) => {
+        e.preventDefault()
+        setMessage(`Uploading please wait....\n Please dont save the file`)
+        const photo = imageRef.current.files[0]
+        console.log(photo)
+
+        // const updatedpic = URL.createObjectURL(photo)
+        // seturl(updatedpic)
+
+        const data = new FormData()
+        data.append("file", photo)
+        data.append("upload_preset", "Mentors-n-Mentee");
+        data.append("cloud_name", "dcxdz0kfq");
+
+        try {
+            await axios.post("https://api.cloudinary.com/v1_1/dcxdz0kfq/image/upload", data)
+                .then(res => {
+                    console.log(res.data.url)
+                    seturl(res.data.url)
+                    setUserInfo(prev => ({
+                        ...prev, img: res.data.url
+                    }))
+                })
+        }
+        catch (e) {
+            updateModal(e.response.data.error.message, e.response.statusText);
+        }
+        finally {
+            setMessage(`Now you can save your file`)
+
+        }
+    }
 
     return (
         <div className="updateProfileBlock">
@@ -102,8 +146,7 @@ export default function Updateprofile() {
                 <div className="studentDataInfoNavbar">
                     <div className="imageContainerBlock">
                         <img
-                            src={user.user.img || "https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D"}
-                            alt="profile"
+                            src={url ? url : universalImage} alt="profile"
                             onClick={() => {
                                 const navigationBarBlock = document.querySelector('.navigationBarBlock');
                                 if (navigationBarBlock) {
@@ -116,11 +159,31 @@ export default function Updateprofile() {
             </div>
             <div className="mainContentblock">
                 <div className="studentInfoName ">
+                    <div className="detailsBlockStudent nunito">
+                        <div className="inputholdingContainer">
+                            <div className="file" style={{ opacity: !isEditable ? "1" : "0.5" }} onClick={handleDivClick}>
+                                {isEditable && <>
+                                    <div className="extracontainer">+</div>
+                                    <input
+                                        type="file"
+                                        id="profile"
+                                        ref={imageRef}
+                                        readOnly={!isEditable}
+                                        style={{ display: "none" }}
+                                        onChange={onChangeHandler}
+                                        name="profilePic"
+                                        className="inputfolder"
+                                    />
+                                </>}
+                                {url !== "" ? <img className="imageblock" src={url} alt="" /> : "+"}
+                            </div>
+                        </div>
+                    </div>
                     <div className="studentCredentials">
                         <h1 className="h1 nunito">{user.user.name}</h1>
                         <p className="p nunito">{user.user.id}</p>
                     </div>
-                    {user.user.address ? (
+                    {user.user.addr ? (
                         <p className="addr nunito">{user.user.addr}</p>
                     ) : (
                         <p className="addr nunito">Malnad College of Engineering</p>
@@ -154,6 +217,7 @@ export default function Updateprofile() {
                 {message && <p className="success nunito">{message}</p>}
                 <form>
                     <div className="studentDetailsBlock2">
+
                         <div className="detailsBlockStudent nunito">
                             <div className="querry">Name</div>
                             <div className="inputholdingContainer">

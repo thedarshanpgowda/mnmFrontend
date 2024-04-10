@@ -168,7 +168,7 @@ export function StudentContainerBlock(props) {
 
             doc.setFontSize(14);
             doc.text(title, 14, y);
-            y += 10;
+            y += 3;
 
             // Filter out unwanted fields
             const filteredDataObject = filterFields(dataObject);
@@ -201,6 +201,8 @@ export function StudentContainerBlock(props) {
         // Generate tables for CIE/See data
         generateTableForInfo(student.studentInfo, "Student Details");
         generateTable(student.cie1, "CIE 1 Details");
+        doc.addPage();
+        y = 10;
         generateTable(student.cie2, "CIE 2 Details");
         generateTable(student.cie3, "CIE 3 Details");
         generateTable(student.see, "See Details");
