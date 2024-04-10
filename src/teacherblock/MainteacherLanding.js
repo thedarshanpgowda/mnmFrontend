@@ -63,7 +63,7 @@ export function LeftSubMainlanding(props) {
 
                 if (navigationBarBlock) {
                     if (window.innerWidth < 600) {
-                        navigationBarBlock.style.marginTop = "500%";
+                        navigationBarBlock.style.marginTop = "-500%";
                     } else {
                         navigationBarBlock.style.marginTop = "0px";
                     }
@@ -84,7 +84,7 @@ export function LeftSubMainlanding(props) {
 
                         if (navigationBarBlock) {
                             if (window.innerWidth < 600) {
-                                navigationBarBlock.style.marginTop = "500%";
+                                navigationBarBlock.style.marginTop = "-500%";
                             } else {
                                 navigationBarBlock.style.marginTop = "0px";
                             }
@@ -100,7 +100,7 @@ export function LeftSubMainlanding(props) {
 
                         if (navigationBarBlock) {
                             if (window.innerWidth < 600) {
-                                navigationBarBlock.style.marginTop = "500%";
+                                navigationBarBlock.style.marginTop = "-500%";
                             } else {
                                 navigationBarBlock.style.marginTop = "0px";
                             }
@@ -111,7 +111,7 @@ export function LeftSubMainlanding(props) {
 
                             if (navigationBarBlock) {
                                 if (window.innerWidth < 600) {
-                                    navigationBarBlock.style.marginTop = "500%";
+                                    navigationBarBlock.style.marginTop = "-500%";
                                 } else {
                                     navigationBarBlock.style.marginTop = "0px";
                                 }
