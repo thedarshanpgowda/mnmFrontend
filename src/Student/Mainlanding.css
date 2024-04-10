@@ -134,9 +134,9 @@ body {
     /* height: 150px; */
 }
 
-.select{
+.select {
     width: 100%;
-  padding: 15px;
+    padding: 15px;
 }
 
 .reasonsFor {
@@ -178,9 +178,11 @@ body {
     width: 100%;
     height: 40%;
 }
-.reasonsFor .inputBlockContainer3:last-child{
+
+.reasonsFor .inputBlockContainer3:last-child {
     margin: 0 auto 20px auto;
 }
+
 .addr {
     margin: 0;
 }
@@ -189,7 +191,7 @@ body {
     padding: 10px;
     width: 21%;
     margin: 20px 30px;
-        display: block;
+    display: block;
 }
 
 .rightblockcontainer {
@@ -333,7 +335,7 @@ tbody {
     margin: 20px auto;
     border: 1px black solid;
     border-radius: 10px;
-  }
+}
 
 @media(width < 600px) {
     body {
@@ -345,7 +347,9 @@ tbody {
     }
 
     .profilePic img {
-        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
     }
 
     .profileblock {

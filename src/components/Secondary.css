@@ -182,6 +182,10 @@
     .profilePic {
         display: flex;
         align-items: center;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        overflow: hidden;
     }
 
     .profilefolder {
