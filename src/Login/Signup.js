@@ -37,13 +37,13 @@ export default function Signup() {
             if (JSON.parse(localStorage.getItem("data")).isSuccess) {
                 navigate("/mnm/student");
             }
-            else {
-                navigate("/mnm/")
-            }
+            // else {
+            //     navigate("/mnm/")
+            // }
         }
-        else {
-            navigate("/mnm/")
-        }
+        // else {
+        //     navigate("/mnm/")
+        // }
     }, [])
 
 
@@ -113,7 +113,6 @@ export default function Signup() {
                 })
                 .catch((err) => {
                     updateModal(`${err.response.data.message}`, `${err.response.data.status}`)
-                    navigate('/mnm/')
                     console.log("error while posting the data ", err)
                 });
         }

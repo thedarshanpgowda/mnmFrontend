@@ -201,12 +201,29 @@ export function StudentContainerBlock(props) {
         // Generate tables for CIE/See data
         generateTableForInfo(student.studentInfo, "Student Details");
         generateTable(student.cie1, "CIE 1 Details");
-        doc.addPage();
-        y = 10;
+        y += 10;
+        doc.setFontSize(10);
+        doc.text(`Faculty sign: `, 14, y);
+        doc.addPage()
+        y=10;
+        y += 9;
         generateTable(student.cie2, "CIE 2 Details");
+        y += 10;
+        doc.setFontSize(10);
+        doc.text(`Faculty sign: `, 14, y);
+        y += 9;
         generateTable(student.cie3, "CIE 3 Details");
+        y += 10;
+        doc.setFontSize(10);
+        doc.text(`Faculty sign: `, 14, y);
+        y += 9;
+        doc.addPage()
+        y=10;
         generateTable(student.see, "See Details");
-
+        y += 10;
+        doc.setFontSize(10);
+        doc.text(`Faculty sign: `, 14, y);
+        y += 9;
         doc.save(`${student.usn}.pdf`);
     };
 

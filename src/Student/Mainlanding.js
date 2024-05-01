@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Chart from '../components/Chart'
 import './Mainlanding.css'
 import { useContext } from 'react'
@@ -8,6 +8,7 @@ import Mainstudentblock from './Mainstudentblock';
 import { useNavigate } from "react-router-dom";
 import Updateprofile from './Updateprofile';
 import MentorComment from './MentorComment';
+import { universalImage } from '../helper';
 
 export default function Mainlanding() {
     const user = useContext(StudentProfileContext)
@@ -52,6 +53,10 @@ export function LeftSubMainlanding(props) {
             })
         })
     }
+    const [url, seturl] = useState()
+    useEffect(() => {
+        seturl(user.user.img)
+    }, [])
     return (
         <div className="navigationBarBlock">
             <div className="profileblock cancel" onClick={() => {
@@ -68,6 +73,19 @@ export function LeftSubMainlanding(props) {
                 X
             </div>
             <Chart className="HeaderNavbarcontentBlock">
+                <div className="studentDataInfoNavbar">
+                    <div className="imageContainerBlock1">
+                        <img
+                            src={url ? url : universalImage} alt="profile"
+                            onClick={() => {
+                                const navigationBarBlock = document.querySelector('.navigationBarBlock');
+                                if (navigationBarBlock) {
+                                    navigationBarBlock.style.marginTop = "0%";
+                                }
+                            }}
+                        />
+                    </div>
+                </div>
                 <div className="headercontent nunito">
                     {user.user.name} Dashboard
                 </div>
